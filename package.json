@@ -1,0 +1,39 @@
+{
+  "name": "drone",
+  "description": "Express && Socket.IO && Ar-drone App for Ar-Drone 2.0",
+  "version": "0.0.0",
+  "author": "Grzegorz Bielak",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "browserify -d public/assets/js/src/main.js -o public/assets/js/dist/main.js",
+    "watch": "watchify -v -d public/assets/js/src/main.js -o public/assets/js/dist/main.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ],
+          "sourceMap": true
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "jquery": "^3.1.1",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "ar-drone": "0.3.3",
+    "express": "4.14.1",
+    "socket.io": "1.7.3"
+  }
+}
