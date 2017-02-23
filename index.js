@@ -23,6 +23,12 @@ io.on('connection', function (socket) {
   io.emit('stats', { numClients: numClients });
   console.log('Connected:', numClients);
 
+  setInterval(function () {
+    var batteryLevel = drone.battery();
+
+    socket.emit('battery', { value: batteryLevel });
+  }, 60000);
+
   socket.on('leds', function (data) {
     drone.animateLeds(data.type, data.hz, data.duration);
   });
