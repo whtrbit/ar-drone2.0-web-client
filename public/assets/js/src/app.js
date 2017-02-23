@@ -11,9 +11,9 @@ class App {
       .on('stats', function (data) {
         console.log('Connected clients:', data.numClients);
       })
-      .on('battery', function (data) {
+      .on('battery', (data) => {
         this.battery.update(data);
-      }.bind(this));
+      });
 
     // Events
     this.leds.addClickListener((params) => {
