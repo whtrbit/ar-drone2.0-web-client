@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Drone App</title>
+  <title>Ar-drone2.0-web-client</title>
+
+  <script src="assets/js/dist/libs/socket.io.js"></script>
+  <script src="assets/js/dist/libs/nodecopter-client.js"></script>
 </head>
 <body>
   <h1>Yo</h1>
   <button data-drone-action="leds"
           data-drone-param-type="blinkRed"
           data-drone-param-hz="3"
-          data-drone-param-duration="3">blinkRed 3 3</button>
+          data-drone-param-duration="3">blinkRed 3*3</button>
   <button data-drone-action="leds"
           data-drone-param-type="blinkGreen"
           data-drone-param-hz="3"
-          data-drone-param-duration="3">blinkGreen 3 3</button>
+          data-drone-param-duration="3">blinkGreen 3*3</button>
 
-  <script src="assets/js/dist/libs/socket.io.js"></script>
+  <div id="camera"></div>
+  <script>
+    new NodecopterStream(document.getElementById("camera"), {port: 3001});
+  </script>
   <script src="assets/js/dist/main.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "drone",
+  "name": "Ar-drone2.0-web-client",
   "description": "Express && Socket.IO && Ar-drone App for Ar-Drone 2.0",
   "version": "0.0.0",
   "author": "Grzegorz Bielak",
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "ar-drone": "0.3.3",
+    "dronestream": "^1.1.1",
     "express": "4.14.1",
     "socket.io": "1.7.3"
   }

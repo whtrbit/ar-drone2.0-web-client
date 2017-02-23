@@ -26,6 +26,6 @@ export class Leds {
       var params = getParams($(e.target));
 
       cb(params);
-    })
+    });
   }
 }

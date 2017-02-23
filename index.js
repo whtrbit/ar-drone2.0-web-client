@@ -3,7 +3,8 @@ var express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io')(server),
     path = require('path'),
-    drone = require('ar-drone').createClient();
+    drone = require('ar-drone').createClient(),
+    stream = require('dronestream');
 
 app.use('/public', express.static(path.join(__dirname + '/public')));
 
@@ -11,8 +12,10 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-server.listen(4200);
-console.log('Listening on port 4200...');
+server.listen(3000);
+stream.listen(3001);
+
+console.log('Listening on port 3000...');
 
 var numClients = 0;
 io.on('connection', function (socket) {
