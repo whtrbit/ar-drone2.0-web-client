@@ -8,7 +8,7 @@ class App {
 
     var socket = io.connect('/');
     socket
-      .on('stats', function (data) {
+      .on('stats', (data) => {
         console.log('Connected clients:', data.numClients);
       })
       .on('battery', (data) => {

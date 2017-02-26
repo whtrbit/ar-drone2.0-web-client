@@ -3,7 +3,7 @@ import $ from 'jquery';
 const SELECTOR_LEDS = '[data-drone-action="leds"]';
 
 /*
- * @return {Object}
+ * @returns {Object}
  */
 let getParams = function ($el) {
   var params = {
