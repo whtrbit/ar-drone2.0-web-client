@@ -6,15 +6,19 @@
 .c-button {
   display: inline-block;
   padding: 0 (@ui-setting-height * .75);
+  // border-radius: @ui-setting-height;
   border-radius: 3px;
   height: @ui-setting-height;
   line-height: @ui-setting-height;
   padding-bottom: 2px; // little cheat
   background-color: @color-batman;
+  border: 2px solid lighten(@color-batman, @ui-setting-hover);
   color: @color-white;
   font: 500 1.5rem @font-batman;
   text-shadow: 0 1px 2px fade(@color-black, 35%);
+  box-shadow: 0 1px 2px fade(@color-black, 35%), 0 2px 8px fade(@color-black, 10%);
   cursor: pointer;
+  box-sizing: border-box;
 
   @media (min-width: @rwd-breakpoint-xl) {
     .transition();
@@ -25,10 +29,21 @@
   }
   &--cta {
     background-color: @color-joker;
+    border: 2px solid lighten(@color-joker, @ui-setting-hover);
 
     @media (min-width: @rwd-breakpoint-xl) {
       &:hover {
         background-color: lighten(@color-joker, @ui-setting-hover);
+      }
+    }
+  }
+  &--transparent {
+    background-color: fade(@color-white, 15%);
+    border: 2px solid fade(@color-white, @ui-setting-hover);
+
+    @media (min-width: @rwd-breakpoint-xl) {
+      &:hover {
+        background-color: fade(@color-white, (15% + @ui-setting-hover));
       }
     }
   }

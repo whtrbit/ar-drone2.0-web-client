@@ -2273,7 +2273,7 @@ a-television:before {
 html,
 body {
   font: 400 62.5%/1.35 "Ubuntu", Arial, Helvetica, sans-serif;
-  background-color: #2c2d31;
+  background: #2c2d31;
   color: #b6bfc9;
   height: 100%;
 }
@@ -2281,6 +2281,17 @@ body {
   position: relative;
   font-size: 1.5rem;
   min-height: 100%;
+}
+.l-page:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("../imgs/bg.jpg");
+  opacity: .1;
+  filter: blur(20px);
 }
 .l-container {
   position: relative;
@@ -2435,10 +2446,13 @@ body {
   line-height: 36px;
   padding-bottom: 2px;
   background-color: #229a9a;
+  border: 2px solid #28b6b6;
   color: #fff;
   font: 500 1.5rem "Ubuntu", Arial, Helvetica, sans-serif;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  box-sizing: border-box;
 }
 @media (min-width: 1025px) {
   .c-button {
@@ -2450,10 +2464,20 @@ body {
 }
 .c-button--cta {
   background-color: #973e54;
+  border: 2px solid #af4861;
 }
 @media (min-width: 1025px) {
   .c-button--cta:hover {
     background-color: #af4861;
+  }
+}
+.c-button--transparent {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.0666);
+}
+@media (min-width: 1025px) {
+  .c-button--transparent:hover {
+    background-color: rgba(255, 255, 255, 0.2166);
   }
 }
 /* ===========================================================
@@ -2465,6 +2489,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 10;
 }
 .s-playground__actions,
 .s-playground__battery {
