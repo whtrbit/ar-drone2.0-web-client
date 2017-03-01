@@ -62,10 +62,10 @@ gulp.task('bs', function () {
       path.html.src + 'index.html'
     ],
     open: false,
-    ghostMode: false
-    // mode: 'proxy',
-    // socket: {
-    //   port: 3000
-    // }
+    ghostMode: false,
+    proxy: {
+      target: 'http://localhost:3000',
+      ws: true
+    }
   });
 });
