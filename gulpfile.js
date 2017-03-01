@@ -42,7 +42,8 @@ gulp.task('js', function () {
 gulp.task('less', function () {
     return gulp.src(path.css.src + 'main.less')
       .pipe(less())
-      .pipe(gulp.dest(path.css.dest));
+      .pipe(gulp.dest(path.css.dest))
+      .pipe(browserSync.stream());
 });
 
 gulp.task('build', ['js', 'less']);
@@ -58,7 +59,7 @@ gulp.task('bs', function () {
     port: 3000,
     files: [
       path.js.dest + 'main.js',
-      path.css.src + 'main.less',
+      path.css.dest + 'main.css',
       path.html.src + 'index.html'
     ],
     open: false,

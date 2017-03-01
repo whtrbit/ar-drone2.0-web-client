@@ -1,0 +1,20 @@
+/* ===========================================================
+   Button
+   =========================================================== */
+.c-button {
+  display: inline-block;
+  padding: 0 @ui-setting-height * .75;
+  // border-radius: @ui-setting-height;
+  height: @ui-setting-height;
+  line-height: @ui-setting-height;
+  padding-bottom: 2px; // little cheat
+  background-color: @color-batman;
+  color: @color-white;
+  font: 500 1.5rem @font-batman;
+  text-shadow: 0 1px 2px fade(@color-black, 35%);
+  cursor: pointer;
+
+  &--cta {
+    background-color: @color-joker;
+  }
+}

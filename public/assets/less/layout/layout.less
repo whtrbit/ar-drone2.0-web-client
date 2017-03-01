@@ -6,13 +6,19 @@
 html,
 body {
   font: 400 62.5%/1.35 @font-batman;
-  color: @color-gray-dark-extreme;
+  background-color: @color-blue-dark;
+  color: @color-blue-light;
   height: 100%;
+}
+.l-page {
+  position: relative;
+  font-size: 1.5rem;
+  min-height: 100%;
 }
 .l-container {
   position: relative;
   width: 92%;
-  max-width: @rwd-breakpoint-xxl;
+  // max-width: @rwd-breakpoint-xxl;
   margin: 0 auto;
   .clearfix();
 }

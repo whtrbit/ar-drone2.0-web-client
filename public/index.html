@@ -5,29 +5,38 @@
   <title>Ar-drone2.0-web-client</title>
 
   <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700">
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <body>
-  <div data-drone-state="battery">Battery level</div>
+  <div class="l-page">
+    <div class="s-playground">
+      <div data-drone-state="battery">Battery level</div>
 
-  <button data-drone-action="leds"
-          data-drone-param-type="blinkRed"
-          data-drone-param-hz="3"
-          data-drone-param-duration="3">blinkRed 3*3</button>
-  <button data-drone-action="leds"
-          data-drone-param-type="blinkGreen"
-          data-drone-param-hz="3"
-          data-drone-param-duration="3">blinkGreen 3*3</button>
+      <button data-drone-action="fly"
+              data-drone-param-type="takeoff"
+              class="c-button c-button--cta">Take off</button>
+      <button data-drone-action="fly"
+              data-drone-param-type="stop"
+              class="c-button c-button--cta">Stop</button>
+      <button data-drone-action="fly"
+              data-drone-param-type="land"
+              class="c-button c-button--cta">Land</button>
 
-  <button data-drone-action="fly"
-          data-drone-param-type="takeoff">Take off</button>
-  <button data-drone-action="fly"
-          data-drone-param-type="stop">Stop</button>
-  <button data-drone-action="fly"
-          data-drone-param-type="land">Land</button>
+      <button data-drone-action="leds"
+              data-drone-param-type="blinkRed"
+              data-drone-param-hz="3"
+              data-drone-param-duration="3"
+              class="c-button">blinkRed 3x3</button>
+      <button data-drone-action="leds"
+              data-drone-param-type="blinkGreen"
+              data-drone-param-hz="3"
+              data-drone-param-duration="3"
+              class="c-button">blinkGreen 3*3</button>
 
-  <div id="camera"></div>
+      <div id="camera"></div>
+    </div>
+  </div>
 
   <script src="assets/js/dist/libs/socket.io.js"></script>
   <script src="assets/js/dist/libs/nodecopter-client.js"></script>
