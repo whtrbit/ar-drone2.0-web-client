@@ -1,0 +1,24 @@
+/* ===========================================================
+   Form area
+   =========================================================== */
+@import (reference) "../importer";
+
+.form-area {
+  background-color: @color-gray-gentle;
+  padding: 25px 20px;
+
+  &--small {
+    padding: 10px;
+  }
+  &--transparent {
+    background-color: transparent;
+  }
+  &--bordered {
+    border: 2px solid @color-gray-tender;
+  }
+  &--expanded {
+    margin: 0 -(@ui-setting-layout-margin * 2);
+    border-left: none;
+    border-right: none;
+  }
+}

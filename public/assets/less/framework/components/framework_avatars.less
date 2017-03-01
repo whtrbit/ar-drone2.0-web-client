@@ -1,0 +1,74 @@
+@import (reference) "../importer.less";
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  line-height: 0;
+  width: 100%;
+  z-index: 5;
+
+  &__img {
+    width: 95px;
+    height: 95px;
+    border-radius: 95px;
+  }
+  &__details {
+    margin: 10px 0;
+    line-height: 1.4;
+
+    span {
+      display: block;
+      .ellipsis();
+    }
+    &__name {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: @color-gray-dark-extreme;
+      margin-top: 5px;
+    }
+  }
+
+
+  /* -----------------------------------
+     Medium
+     ----------------------------------- */
+  &--medium {
+    .avatar__img {
+      width: 55px;
+      height: 55px;
+    }
+  }
+
+
+  /* -----------------------------------
+     Small
+     ----------------------------------- */
+  &--small {
+    .avatar__img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+
+  /* -----------------------------------
+     Tiny
+     ----------------------------------- */
+  &--tiny {
+    .avatar__img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+
+  /* -----------------------------------
+     No details
+     ----------------------------------- */
+  &--no_details {
+    .avatar__details {
+      display: none;
+    }
+  }
+}

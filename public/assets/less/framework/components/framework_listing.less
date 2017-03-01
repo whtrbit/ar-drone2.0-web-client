@@ -1,0 +1,74 @@
+/* ===========================================================
+   Listing
+   =========================================================== */
+@import (reference) "../importer";
+
+.listing {
+  margin: -@ui-setting-grid-size-sm -@ui-setting-grid-size-sm -@ui-setting-grid-size-sm + (-@ui-setting-grid-size-sm + 4);
+
+  &__item {
+    display: inline-block;
+    margin-left: -4px;
+    position: relative;
+    padding: @ui-setting-grid-size-sm;
+    font-size: 1.5rem;
+
+    a {
+      color: inherit;
+    }
+    &__ingredient { // sth sticked to right
+      &:before {
+        content: " - ";
+        margin: 0 2px;
+      }
+      font-size: 1.3rem;
+      color: @color-gray;
+    }
+  }
+  &--circled {
+    position: relative;
+    margin-left: 5px;
+    padding-left: 30px;
+
+    .listing__item:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 12px;
+      left: -12px;
+      margin-right: @ui-setting-grid-size-sm;
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: @color-gray-light;
+    }
+  }
+  &--squezzed {
+    margin: -(@ui-setting-grid-size-sm / 2) -(@ui-setting-grid-size-sm / 2) -(@ui-setting-grid-size-sm / 2) (-(@ui-setting-grid-size-sm / 2) + 4);
+
+    .listing__item {
+      padding: @ui-setting-grid-size-sm / 2;
+    }
+  }
+  &--blocked {
+    .listing__item {
+      display: block;
+    }
+  }
+  &--numbered {
+    counter-reset: section;
+
+    li {
+      &:before {
+        float: left;
+        counter-increment: section;
+        content: counters(section, ".") ".";
+        font-weight: 600;
+      }
+      > p,
+      > span {
+        margin-left: 28px;
+      }
+    }
+  }
+}

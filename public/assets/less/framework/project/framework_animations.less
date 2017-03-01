@@ -1,0 +1,68 @@
+/* ===========================================================
+   Animation
+   =========================================================== */
+@import (reference) "../importer";
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  99% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes grow_big {
+  0% {
+    transform: scale(1);
+  }
+  99% {
+    transform: scale(4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes pound {
+  0% {
+    opacity: 0;
+    .scale(0, 0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0% {
+    background-color: transparent;
+    opacity: 0;
+  }
+  50% {
+    background-color: @color-accent-yellow;
+    opacity: .25;
+  }
+  100% {
+    background-color: transparent;
+    opacity: 0;
+  }
+}
+@keyframes shake {
+  0% {
+    .translate3d(100%, 0);
+  }
+  69% {
+    .translate3d(90%, 0);
+  }
+  100% {
+    .translate3d(100%, 0);
+  }
+}

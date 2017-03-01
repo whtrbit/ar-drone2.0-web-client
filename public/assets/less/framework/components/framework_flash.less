@@ -1,0 +1,29 @@
+/* ===========================================================
+   Flash
+   =========================================================== */
+@import (reference) "../importer";
+
+// The element that receives a highlight on :target
+.flash {
+  margin: -10px;
+
+  .flash__item {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      bottom: -8px;
+      left: -8px;
+      z-index: 5;
+      will-change: opacity;
+    }
+    &:target {
+      &:after {
+        animation: flash 1s linear .5s 1;
+      }
+    }
+  }
+}

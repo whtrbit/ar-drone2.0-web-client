@@ -1,0 +1,53 @@
+/* ===========================================================
+   Layout
+   =========================================================== */
+@import (reference) "../importer";
+
+html,
+body {
+  font: 400 62.5%/1.35 @font-batman;
+  color: @color-gray-dark-extreme;
+  height: 100%;
+}
+#page {
+  font-size: 1.5rem;
+  overflow: hidden;
+  background-color: @color-gray-gentle;
+  background: @color-gray-tender url("../images/bg.jpg") 0 0 no-repeat;
+  background-size: auto 760px;
+  background-position: 50% 0;
+
+  @media (min-width: @rwd-breakpoint-xl) {
+    background-size: 100% auto;
+  }
+}
+.l-container {
+  position: relative;
+  width: 92%;
+  max-width: @rwd-breakpoint-xxl;
+  margin: 0 auto;
+  .clearfix();
+
+  @media (min-width: @rwd-breakpoint-xl) {
+    width: 92%;
+  }
+}
+#content {
+  .clearfix();
+
+  .content {
+    margin: @ui-setting-layout-margin 0 0;
+    .clearfix();
+
+    @media (min-width: @rwd-breakpoint-xl) {
+      float: left;
+      width: 66.66%;
+      box-sizing: border-box;
+      padding-right: @ui-setting-layout-margin;
+
+      &--wide {
+        width: 100%;
+      }
+    }
+  }
+}

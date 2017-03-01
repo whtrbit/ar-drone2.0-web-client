@@ -1,0 +1,72 @@
+/* ================================================================
+   Framework dropdown
+   ================================================================ */
+@import (reference) "../importer.less";
+
+.dropdown {
+  display: none;
+  background-color: @color-white;
+  padding: 8px 0;
+  border: 2px solid @color-gray-tender;
+  padding: 10px 0;
+  overflow-y: auto;
+  border-radius: @ui-setting-radius;
+  z-index: 20;
+  min-width: 200px;
+
+  li {
+    display: block !important;
+    margin: 0 !important;
+
+    a,
+    span {
+      display: block;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    a {
+      text-transform: none;
+      padding: 8px 15px;
+      color: @color-gray-dark;
+
+      @media (min-width: @rwd-breakpoint-xl) {
+        .transition();
+
+        &:hover {
+          background-color: @color-gray-gentle;
+        }
+      }
+    }
+    span {
+      text-transform: uppercase;
+      font-weight: 800;
+      padding: 10px 15px 5px;
+    }
+  }
+}
+.dropdown--2_cols {
+  li {
+    width: 50%;
+    float: left;
+  }
+}
+
+
+/* -----------------------------------
+   Dropdown trigger
+   ----------------------------------- */
+.dropdown-trigger {
+  position: relative;
+  padding-right: 25px;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    .translate(-7px, -50%);
+    content: "\f107";
+    .helper-icons-declaration();
+    display: block;
+    font-size: @ui-setting-height / 2;
+  }
+}

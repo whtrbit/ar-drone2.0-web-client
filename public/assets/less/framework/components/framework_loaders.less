@@ -1,0 +1,31 @@
+/* ===========================================================
+   Loaders
+   =========================================================== */
+@import (reference) "../importer";
+
+@size: 40px;
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  .translate(-(@size / 2), -(@size / 2));
+
+  i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @size;
+    height: @size;
+    border-radius: @size;
+    background-color: red; // @TODO
+    animation: pound 2.4s ease 0s infinite;
+    opacity: 0;
+
+    &:nth-child(2) {
+      animation-delay: .8s;
+    }
+    &:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+  }
+}

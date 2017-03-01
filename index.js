@@ -33,6 +33,26 @@ io.on('connection', function (socket) {
     drone.animateLeds(data.type, data.hz, data.duration);
   });
 
+  socket.on('fly', function (data) {
+    switch (data.type) {
+      case 'takeoff':
+        console.log('Taking off... Landing in 500ms.');
+        drone.takeoff();
+        break;
+
+      case 'stop':
+        console.log('Stopping and hovering...');
+        drone.stop();
+
+      case 'land':
+        console.log('Landing...');
+        drone.land();
+
+      default:
+        console.log('Unknown command.');
+    }
+  });
+
   socket.on('disconnect', function () {
     numClients--;
     io.emit('stats', { numClients: numClients });

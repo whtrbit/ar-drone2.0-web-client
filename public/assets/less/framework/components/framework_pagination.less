@@ -1,0 +1,72 @@
+/* ===========================================================
+   Pagination
+   =========================================================== */
+@import (reference) "../importer";
+
+.pagination {
+  display: table;
+  margin: 0 auto;
+
+  a,
+  span {
+    display: inline-block;
+    vertical-align: top;
+    min-width: @ui-setting-height;
+    height: @ui-setting-height;
+    line-height: @ui-setting-height;
+    border-radius: @ui-setting-radius;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: @color-gray;
+    background-color: @color-gray-tender;
+    margin: 2px;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    &:first-child,
+    &:last-child {
+      position: relative;
+      overflow: hidden;
+      width: 36px;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 3.2rem;
+        color: @color-gray;
+        .helper-icons-declaration();
+        background-color: @color-white;
+      }
+    }
+    &:first-child:after {
+      content: "\f104";
+    }
+    &:last-child:after {
+      content: "\f105";
+    }
+  }
+  a {
+    @media (min-width: @rwd-breakpoint-xl) {
+      .transition();
+
+      &:hover {
+        background-color: @color-project-robin;
+        color: @color-white;
+        text-shadow: 0 1px 3px fade(@color-black, 15%);
+      }
+    }
+  }
+  span {
+    cursor: default;
+  }
+  .current {
+    background-color: @color-project-batman;
+    color: @color-white;
+  }
+  .disabled:after {
+    color: @color-gray-smooth !important;
+  }
+}

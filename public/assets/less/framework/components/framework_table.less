@@ -1,0 +1,54 @@
+/* ===========================================================
+   Table
+   =========================================================== */
+@import (reference) "../importer";
+
+.table {
+  display: table;
+  width: 100%;
+  margin: 20px 0;
+
+  &__head {
+    display: none;
+
+    @media (min-width: @rwd-breakpoint-l) {
+      display: table-row;
+      background-color: @color-gray-gentle;
+    }
+  }
+  &__row {
+    margin-bottom: 15px;
+
+    @media (min-width: @rwd-breakpoint-l) {
+      display: table-row;
+      margin-bottom: 0;
+    }
+  }
+  &__col {
+    padding: 1rem;
+    border: 1px solid @color-gray-tender;
+    font-weight: 600;
+    font-size: 1.5rem;
+
+    &:first-child {
+      border-left-width: 2px;
+    }
+    &:last-child {
+      border-right-width: 2px;
+    }
+    &:before {
+      display: block;
+      content: attr(data-label);
+      font-weight: normal;
+      color: @color-gray;
+      font-size: 1.3rem;
+    }
+    @media (min-width: @rwd-breakpoint-l) {
+      display: table-cell;
+
+      &:before {
+        content: "";
+      }
+    }
+  }
+}

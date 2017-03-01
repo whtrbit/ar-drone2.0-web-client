@@ -19,6 +19,13 @@
           data-drone-param-hz="3"
           data-drone-param-duration="3">blinkGreen 3*3</button>
 
+  <button data-drone-action="fly"
+          data-drone-param-type="takeoff">Take off</button>
+  <button data-drone-action="fly"
+          data-drone-param-type="stop">Stop</button>
+  <button data-drone-action="fly"
+          data-drone-param-type="land">Land</button>
+
   <div id="camera"></div>
   <script>
     new NodecopterStream(document.getElementById("camera"), {port: 3001});

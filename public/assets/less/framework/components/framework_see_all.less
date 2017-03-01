@@ -1,0 +1,43 @@
+/* ===========================================================
+   See all
+   =========================================================== */
+@import (reference) "../importer";
+
+.see-all {
+  position: relative;
+  margin-top: 40px;
+  text-align: center;
+
+  &__content {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: @color-white;
+    z-index: 2;
+
+    @media (min-width: @rwd-breakpoint-m) {
+      width: auto;
+      padding: 0 15px;
+    }
+  }
+  @media (min-width: @rwd-breakpoint-m) {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      .translate(0, -50%);
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: @color-gray-smooth;
+      z-index: 1;
+    }
+  }
+  &__button {
+    width: 100%;
+
+    @media (min-width: @rwd-breakpoint-m) {
+      width: 100%;
+    }
+  }
+}
