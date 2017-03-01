@@ -11,28 +11,32 @@
 <body>
   <div class="l-page">
     <div class="s-playground">
-      <div data-drone-state="battery">Battery level</div>
+      <div class="s-playground__battery s-battery">
+        <div data-drone-state="battery">Battery level</div>
+      </div>
 
-      <button data-drone-action="fly"
-              data-drone-param-type="takeoff"
-              class="c-button c-button--cta">Take off</button>
-      <button data-drone-action="fly"
-              data-drone-param-type="stop"
-              class="c-button c-button--cta">Stop</button>
-      <button data-drone-action="fly"
-              data-drone-param-type="land"
-              class="c-button c-button--cta">Land</button>
+      <div class="s-playground__actions">
+        <button data-drone-action="fly"
+                data-drone-param-type="takeoff"
+                class="c-button c-button--cta">Take off</button>
+        <button data-drone-action="fly"
+                data-drone-param-type="stop"
+                class="c-button c-button--cta">Stop</button>
+        <button data-drone-action="fly"
+                data-drone-param-type="land"
+                class="c-button c-button--cta">Land</button>
 
-      <button data-drone-action="leds"
-              data-drone-param-type="blinkRed"
-              data-drone-param-hz="3"
-              data-drone-param-duration="3"
-              class="c-button">blinkRed 3x3</button>
-      <button data-drone-action="leds"
-              data-drone-param-type="blinkGreen"
-              data-drone-param-hz="3"
-              data-drone-param-duration="3"
-              class="c-button">blinkGreen 3*3</button>
+        <button data-drone-action="leds"
+                data-drone-param-type="blinkRed"
+                data-drone-param-hz="3"
+                data-drone-param-duration="3"
+                class="c-button">blinkRed 3x3</button>
+        <button data-drone-action="leds"
+                data-drone-param-type="blinkGreen"
+                data-drone-param-hz="3"
+                data-drone-param-duration="3"
+                class="c-button">blinkGreen 3*3</button>
+      </div>
 
       <div id="camera"></div>
     </div>

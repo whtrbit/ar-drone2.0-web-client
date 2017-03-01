@@ -2419,10 +2419,10 @@ body {
   vertical-align: middle;
 }
 .l-grid--gutter {
-  margin: -5px;
+  margin: -10px;
 }
 .l-grid--gutter .l-grid__item {
-  padding: 5px;
+  padding: 10px;
 }
 /* ===========================================================
    Button
@@ -2430,17 +2430,31 @@ body {
 .c-button {
   display: inline-block;
   padding: 0 27px;
+  border-radius: 3px;
   height: 36px;
   line-height: 36px;
   padding-bottom: 2px;
-  background-color: #24a7a7;
+  background-color: #229a9a;
   color: #fff;
   font: 500 1.5rem "Ubuntu", Arial, Helvetica, sans-serif;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   cursor: pointer;
 }
+@media (min-width: 1025px) {
+  .c-button {
+    transition: all 0.2s ease 0s;
+  }
+  .c-button:hover {
+    background-color: #28b6b6;
+  }
+}
 .c-button--cta {
   background-color: #973e54;
+}
+@media (min-width: 1025px) {
+  .c-button--cta:hover {
+    background-color: #af4861;
+  }
 }
 /* ===========================================================
    Playground
@@ -2451,4 +2465,27 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+.s-playground__actions,
+.s-playground__battery {
+  position: absolute;
+}
+.s-playground__actions {
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  text-align: center;
+}
+.s-playground__actions button {
+  margin: 2px;
+}
+.s-playground__battery {
+  top: 10px;
+  right: 10px;
+}
+/* ===========================================================
+   Battery
+   =========================================================== */
+.s-battery {
+  height: 36px;
 }

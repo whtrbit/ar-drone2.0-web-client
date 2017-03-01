@@ -1,10 +1,12 @@
 /* ===========================================================
    Button
    =========================================================== */
+@import (reference) "../importer";
+
 .c-button {
   display: inline-block;
-  padding: 0 @ui-setting-height * .75;
-  // border-radius: @ui-setting-height;
+  padding: 0 (@ui-setting-height * .75);
+  border-radius: 3px;
   height: @ui-setting-height;
   line-height: @ui-setting-height;
   padding-bottom: 2px; // little cheat
@@ -14,7 +16,20 @@
   text-shadow: 0 1px 2px fade(@color-black, 35%);
   cursor: pointer;
 
+  @media (min-width: @rwd-breakpoint-xl) {
+    .transition();
+
+    &:hover {
+      background-color: lighten(@color-batman, @ui-setting-hover);
+    }
+  }
   &--cta {
     background-color: @color-joker;
+
+    @media (min-width: @rwd-breakpoint-xl) {
+      &:hover {
+        background-color: lighten(@color-joker, @ui-setting-hover);
+      }
+    }
   }
 }

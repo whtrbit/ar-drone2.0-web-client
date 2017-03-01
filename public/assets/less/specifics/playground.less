@@ -1,10 +1,31 @@
 /* ===========================================================
    Playground
    =========================================================== */
+@import (reference) "../importer";
+
 .s-playground {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+
+  &__actions,
+  &__battery {
+    position: absolute;
+  }
+  &__actions {
+    top: @ui-setting-offset;
+    left: @ui-setting-offset;
+    right: @ui-setting-offset;
+    text-align: center;
+
+    button {
+      margin: 2px;
+    }
+  }
+  &__battery {
+    top: @ui-setting-offset;
+    right: @ui-setting-offset;
+  }
 }
