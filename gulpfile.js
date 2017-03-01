@@ -58,7 +58,7 @@ gulp.task('bs', function () {
     port: 3000,
     files: [
       path.js.dest + 'main.js',
-      path.css.dest + 'main.css',
+      path.css.src + 'main.less',
       path.html.src + 'index.html'
     ],
     open: false,

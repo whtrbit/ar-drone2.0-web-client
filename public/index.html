@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <title>Ar-drone2.0-web-client</title>
 
-  <script src="assets/js/dist/libs/socket.io.js"></script>
-  <script src="assets/js/dist/libs/nodecopter-client.js"></script>
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <body>
   <div data-drone-state="battery">Battery level</div>
@@ -27,6 +28,9 @@
           data-drone-param-type="land">Land</button>
 
   <div id="camera"></div>
+
+  <script src="assets/js/dist/libs/socket.io.js"></script>
+  <script src="assets/js/dist/libs/nodecopter-client.js"></script>
   <script>
     new NodecopterStream(document.getElementById("camera"), {port: 3001});
   </script>
