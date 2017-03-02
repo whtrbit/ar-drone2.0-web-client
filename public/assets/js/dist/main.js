@@ -10253,6 +10253,7 @@ var App = function App() {
     console.log('Connected clients:', data.numClients);
   }).on('battery', function (data) {
     _this.battery.update(data);
+    _this.battery.colorize(data);
   });
 
   // Events
@@ -10298,19 +10299,42 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-var SELECTOR_BATTERY = '[data-drone-state="battery"]';
+var SELECTOR_BATTERY = '[data-drone-battery]';
+var SELECTOR_BATTERY_PROGRESS = '[data-drone-battery="progress"]';
+var SELECTOR_BATTERY_VALUE = '[data-drone-battery="value"]';
+var STATES = ['low', 'medium', 'high'];
 
 var Battery = exports.Battery = function () {
   function Battery() {
     _classCallCheck(this, Battery);
 
     this.$battery = (0, _jquery2.default)(SELECTOR_BATTERY);
+    this.$batteryProgress = this.$battery.find(SELECTOR_BATTERY_PROGRESS);
+    this.$batteryValue = this.$battery.find(SELECTOR_BATTERY_VALUE);
   }
 
   _createClass(Battery, [{
     key: 'update',
-    value: function update(data) {
-      this.$battery.html(data.value);
+    value: function update(level) {
+      this.$batteryProgress.css('width', level + '%');
+      this.$batteryValue.html(level);
+    }
+  }, {
+    key: 'colorize',
+    value: function colorize(level) {
+      var _this = this;
+
+      STATES.forEach(function (state) {
+        _this.$battery.removeClass('is-' + state);
+      });
+
+      if (level <= 33) {
+        this.$battery.addClass('is-' + STATES[0]);
+      } else if (level >= 34 && level <= 66) {
+        this.$battery.addClass('is-' + STATES[1]);
+      } else {
+        this.$battery.addClass('is-' + STATES[2]);
+      }
     }
   }]);
 

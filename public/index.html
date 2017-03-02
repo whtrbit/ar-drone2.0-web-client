@@ -11,8 +11,11 @@
 <body>
   <div class="l-page">
     <div class="s-playground">
-      <div class="s-playground__battery s-battery">
-        <div data-drone-state="battery">Battery level</div>
+      <div class="s-playground__battery s-battery" data-drone-battery>
+        <div class="s-battery__element">
+          <div class="s-battery__progress" data-drone-battery="progress"></div>
+          <span data-drone-battery="value"></span>
+        </div>
       </div>
 
       <div class="s-playground__actions">

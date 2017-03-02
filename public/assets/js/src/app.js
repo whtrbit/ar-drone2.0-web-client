@@ -15,6 +15,7 @@ class App {
       })
       .on('battery', (data) => {
         this.battery.update(data);
+        this.battery.colorize(data);
       });
 
     // Events
