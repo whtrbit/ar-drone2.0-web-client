@@ -10256,6 +10256,9 @@ var App = function App() {
     _this.battery.colorize(data);
   });
 
+  this.battery.update(100);
+  this.battery.colorize(100);
+
   // Events
   this.leds.addClickListener(function (params) {
     socket.emit('leds', params);

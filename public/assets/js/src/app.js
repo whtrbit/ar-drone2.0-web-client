@@ -18,6 +18,9 @@ class App {
         this.battery.colorize(data);
       });
 
+this.battery.update(100);
+this.battery.colorize(100);
+
     // Events
     this.leds.addClickListener((params) => {
       socket.emit('leds', params);
