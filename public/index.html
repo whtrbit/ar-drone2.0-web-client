@@ -4,44 +4,84 @@
   <meta charset="UTF-8">
   <title>Ar-drone2.0-web-client</title>
 
-  <link rel="stylesheet" href="assets/css/normalize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://i.icomoon.io/public/84d6c68e66/Ar-Drone20dashboard/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
   <div class="l-page">
     <div class="s-playground">
-      <div class="s-playground__battery s-battery" data-drone-battery>
-        <div class="s-battery__element">
-          <div class="s-battery__progress" data-drone-battery="progress"></div>
-          <span data-drone-battery="value"></span>
+      <div class="s-playground__col">
+        <div class="playground__camera s-camera">
+          <div id="camera"></div>
+          <div class="s-battery" data-drone-battery>
+            <div class="s-battery__element">
+              <div class="s-battery__progress" data-drone-battery="progress"></div>
+              <span data-drone-battery="value"></span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="s-playground__actions">
-        <button data-drone-action="fly"
-                data-drone-param-type="takeoff"
-                class="c-button c-button--cta">Take off</button>
-        <button data-drone-action="fly"
-                data-drone-param-type="stop"
-                class="c-button c-button--cta">Stop</button>
-        <button data-drone-action="fly"
-                data-drone-param-type="land"
-                class="c-button c-button--cta">Land</button>
+      <div class="s-playground__col">
+        <div class="s-playground__actions">
+          <button data-drone-action="fly"
+                  data-drone-param-type="takeoff"
+                  class="c-button c-button--cta">Take off</button>
+          <button data-drone-action="fly"
+                  data-drone-param-type="land"
+                  class="c-button c-button--cta">Land</button>
+          <button data-drone-action="fly"
+                  data-drone-param-type="stop"
+                  class="c-button c-button--cta">Stop</button>
 
-        <button data-drone-action="leds"
-                data-drone-param-type="blinkRed"
-                data-drone-param-hz="3"
-                data-drone-param-duration="3"
-                class="c-button c-button--transparent">blinkRed 3x3</button>
-        <button data-drone-action="leds"
-                data-drone-param-type="blinkGreen"
-                data-drone-param-hz="3"
-                data-drone-param-duration="3"
-                class="c-button c-button--transparent">blinkGreen 3*3</button>
+          <!-- <button data-drone-action="leds"
+                  data-drone-param-type="blinkRed"
+                  data-drone-param-hz="3"
+                  data-drone-param-duration="3"
+                  class="c-button c-button--transparent">blinkRed 3x3</button>
+          <button data-drone-action="leds"
+                  data-drone-param-type="blinkGreen"
+                  data-drone-param-hz="3"
+                  data-drone-param-duration="3"
+                  class="c-button c-button--transparent">blinkGreen 3*3</button> -->
+        </div>
+
+        <div class="s-playground__control s-control">
+          <ul class="s-control__wrap">
+            <li data-drone-action="control"
+                data-drone-param-type="front"
+                data-drone-param-speed="0.5"
+                data-drone-param-keycode="38"
+                class="s-control__item s-control__item--front">
+              <i class="icon icon--top"></i>
+            </li>
+            <li data-drone-action="control"
+                data-drone-param-type="right"
+                data-drone-param-speed="0.5"
+                data-drone-param-keycode="39"
+                class="s-control__item s-control__item--right">
+              <i class="icon icon--top"></i>
+            </li>
+            <li data-drone-action="control"
+                data-drone-param-type="left"
+                data-drone-param-speed="0.5"
+                data-drone-param-keycode="37"
+                class="s-control__item s-control__item--left">
+              <i class="icon icon--top"></i>
+            </li>
+            <li data-drone-action="control"
+                data-drone-param-type="back"
+                data-drone-param-speed="0.5"
+                data-drone-param-keycode="40"
+                class="s-control__item s-control__item--back">
+              <i class="icon icon--top"></i>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <div id="camera" class="s-camera"></div>
     </div>
   </div>
 

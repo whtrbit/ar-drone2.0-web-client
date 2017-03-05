@@ -10233,6 +10233,8 @@ var _battery = require('./battery');
 
 var _fly = require('./fly');
 
+var _control = require('./control');
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -10247,6 +10249,7 @@ var App = function App() {
   this.leds = new _leds.Leds();
   this.battery = new _battery.Battery();
   this.fly = new _fly.Fly();
+  this.control = new _control.Control();
 
   var socket = io.connect('/');
   socket.on('stats', function (data) {
@@ -10256,9 +10259,6 @@ var App = function App() {
     _this.battery.colorize(data);
   });
 
-  this.battery.update(100);
-  this.battery.colorize(100);
-
   // Events
   this.leds.addClickListener(function (params) {
     socket.emit('leds', params);
@@ -10266,11 +10266,14 @@ var App = function App() {
   this.fly.addClickListener(function (params) {
     socket.emit('fly', params);
   });
+  this.control.addEventListener(function (params) {
+    socket.emit('control', params);
+  });
 };
 
 exports.default = App;
 
-},{"./battery":3,"./fly":4,"./leds":5}],3:[function(require,module,exports){
+},{"./battery":3,"./control":4,"./fly":5,"./leds":6}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -10350,6 +10353,89 @@ var Battery = exports.Battery = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Control = undefined;
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var SELECTOR_CONTROL = '[data-drone-action="control"]';
+var KEYCODE_FRONT = 38,
+    KEYCODE_BACK = 40,
+    KEYCODE_LEFT = 37,
+    KEYCODE_RIGHT = 39;
+
+/*
+ * @returns {Object}
+ */
+var getParams = function getParams($el) {
+  var params = {
+    type: $el.data('drone-param-type'),
+    speed: $el.data('drone-param-speed'),
+    keycode: $el.data('drone-param-keycode')
+  };
+
+  return params;
+};
+
+var Control = exports.Control = function () {
+  function Control() {
+    _classCallCheck(this, Control);
+
+    this.$control = (0, _jquery2.default)(SELECTOR_CONTROL);
+  }
+
+  _createClass(Control, [{
+    key: 'addEventListener',
+    value: function addEventListener(cb) {
+      (0, _jquery2.default)(window).on('keydown', function (e) {
+        if (e.which === KEYCODE_FRONT || e.which === KEYCODE_BACK || e.which === KEYCODE_LEFT || e.which === KEYCODE_RIGHT) {
+
+          var $el = (0, _jquery2.default)(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
+          var params = getParams($el);
+
+          cb(params);
+        }
+      });
+
+      this.$control.on('click', function (e) {
+        e.preventDefault();
+        var params = getParams((0, _jquery2.default)(e.target));
+
+        cb(params);
+      });
+    }
+  }]);
+
+  return Control;
+}();
+
+},{"jquery":1}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.Fly = undefined;
 
 var _createClass = function () {
@@ -10411,7 +10497,7 @@ var Fly = exports.Fly = function () {
   return Fly;
 }();
 
-},{"jquery":1}],5:[function(require,module,exports){
+},{"jquery":1}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -10480,7 +10566,7 @@ var Leds = exports.Leds = function () {
   return Leds;
 }();
 
-},{"jquery":1}],6:[function(require,module,exports){
+},{"jquery":1}],7:[function(require,module,exports){
 "use strict";
 
 var _app = require("./app");
@@ -10493,6 +10579,6 @@ function _interopRequireDefault(obj) {
 
 new _app2.default();
 
-},{"./app":2}]},{},[6])
+},{"./app":2}]},{},[7])
 
 //# sourceMappingURL=main.js.map

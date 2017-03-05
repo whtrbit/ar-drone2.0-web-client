@@ -1,22 +1,30 @@
 /* ===========================================================
-   Battery
+   Camera
    =========================================================== */
 @import (reference) "../importer";
 
 .s-camera {
-  position: relative;
-  min-width: 100%;
-  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  z-index: 1;
 
-  canvas {
-    position: absolute;
+  @media (orientation: landscape) {
     top: 50%;
     left: 50%;
     .translate(-50%, -50%);
-    // min-width: 100%;
-    // min-height: 100%;
-    opacity: 1;
-    border: 3px solid fade(@color-white, 10%);
-    border-radius: @ui-setting-radius;
+    width: 40vw;
+    height: 0;
+    padding-bottom: 56.5%;
+  }
+  canvas {
+    position: absolute;
+    height: 100%;
+
+    @media (orientation: landscape) {
+      width: 100%;
+    }
   }
 }

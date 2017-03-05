@@ -36,20 +36,49 @@ io.on('connection', function (socket) {
   socket.on('fly', function (data) {
     switch (data.type) {
       case 'takeoff':
-        console.log('Taking off... Landing in 500ms.');
+        console.log('Taking off.');
         drone.takeoff();
         break;
 
       case 'stop':
-        console.log('Stopping and hovering...');
+        console.log('Stopping and hovering.');
         drone.stop();
+        break;
 
       case 'land':
-        console.log('Landing...');
+        console.log('Landing.');
         drone.land();
+        break;
 
       default:
-        console.log('Unknown command.');
+        console.log('Unknown fly event.');
+    }
+  });
+
+  socket.on('control', function (data) {
+    switch(data.type) {
+      case 'front':
+        console.log('Go front.');
+        drone.front(data.speed);
+        break;
+
+      case 'back':
+        console.log('Go back.');
+        drone.back(data.speed);
+        break;
+
+      case 'left':
+        console.log('Go left.');
+        drone.left(data.speed);
+        break;
+
+      case 'right':
+        console.log('Go right.');
+        drone.right(data.speed);
+        break;
+
+      default:
+        console.log('Uknown control event.');
     }
   });
 

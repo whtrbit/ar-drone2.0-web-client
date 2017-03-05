@@ -4,6 +4,11 @@
 @import (reference) "../importer";
 
 .s-battery {
+  position: absolute;
+  top: @ui-setting-offset;
+  right: @ui-setting-offset;
+  z-index: 10;
+
   &__element {
     position: relative;
     top: (@ui-setting-height * .8) * .25;
