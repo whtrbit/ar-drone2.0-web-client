@@ -56,29 +56,21 @@
       background-color: darken(@color-blue-dark, 2.5%);
     }
     &--front {
-      // background: linear-gradient(-45deg, @color-blue-dark, lighten(@color-blue-dark, 5%));
-
       i {
         .rotate(-45deg);
       }
     }
     &--right {
-      // background: linear-gradient(45deg, @color-blue-dark, lighten(@color-blue-dark, 5%));
-
       i {
         .rotate(45deg);
       }
     }
     &--left {
-      // background: linear-gradient(-135deg, @color-blue-dark, lighten(@color-blue-dark, 5%));
-
       i {
         .rotate(-135deg);
       }
     }
     &--back {
-      // background: linear-gradient(135deg, @color-blue-dark, lighten(@color-blue-dark, 5%));
-
       i {
         .rotate(135deg);
       }
@@ -93,6 +85,7 @@
       font-size: 6rem;
       margin: -3rem;
       color: @color-blue-light;
+      pointer-events: none;
     }
   }
 }

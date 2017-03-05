@@ -7,7 +7,8 @@ const SELECTOR_FLY = '[data-drone-action="fly"]';
  */
 let getParams = function ($el) {
   var params = {
-    type: $el.data('drone-param-type')
+    type: $el.data('drone-param-type'),
+    info: $el.data('drone-param-info')
   };
 
   return params;

@@ -29,12 +29,15 @@
         <div class="s-playground__actions">
           <button data-drone-action="fly"
                   data-drone-param-type="takeoff"
+                  data-drone-param-info="Drone's taking off"
                   class="c-button c-button--cta">Take off</button>
           <button data-drone-action="fly"
                   data-drone-param-type="land"
+                  data-drone-param-info="Drone's landing"
                   class="c-button c-button--cta">Land</button>
           <button data-drone-action="fly"
                   data-drone-param-type="stop"
+                  data-drone-param-info="Drone's stopping"
                   class="c-button c-button--cta">Stop</button>
 
           <!-- <button data-drone-action="leds"
@@ -55,6 +58,7 @@
                 data-drone-param-type="front"
                 data-drone-param-speed="0.5"
                 data-drone-param-keycode="38"
+                data-drone-param-info="Go front"
                 class="s-control__item s-control__item--front">
               <i class="icon icon--top"></i>
             </li>
@@ -62,6 +66,7 @@
                 data-drone-param-type="right"
                 data-drone-param-speed="0.5"
                 data-drone-param-keycode="39"
+                data-drone-param-info="Go right"
                 class="s-control__item s-control__item--right">
               <i class="icon icon--top"></i>
             </li>
@@ -69,6 +74,7 @@
                 data-drone-param-type="left"
                 data-drone-param-speed="0.5"
                 data-drone-param-keycode="37"
+                data-drone-param-info="Go left"
                 class="s-control__item s-control__item--left">
               <i class="icon icon--top"></i>
             </li>
@@ -76,6 +82,7 @@
                 data-drone-param-type="back"
                 data-drone-param-speed="0.5"
                 data-drone-param-keycode="40"
+                data-drone-param-info="Go back"
                 class="s-control__item s-control__item--back">
               <i class="icon icon--top"></i>
             </li>
@@ -83,6 +90,8 @@
         </div>
       </div>
     </div>
+
+    <div class="c-tooltip" data-tooltip></div>
   </div>
 
   <script src="assets/js/dist/libs/socket.io.js"></script>

@@ -36,17 +36,17 @@ io.on('connection', function (socket) {
   socket.on('fly', function (data) {
     switch (data.type) {
       case 'takeoff':
-        console.log('Taking off.');
+        console.log(data.info);
         drone.takeoff();
         break;
 
       case 'stop':
-        console.log('Stopping and hovering.');
+        console.log(data.info);
         drone.stop();
         break;
 
       case 'land':
-        console.log('Landing.');
+        console.log(data.info);
         drone.land();
         break;
 
@@ -58,22 +58,22 @@ io.on('connection', function (socket) {
   socket.on('control', function (data) {
     switch(data.type) {
       case 'front':
-        console.log('Go front.');
+        console.log(data.info);
         drone.front(data.speed);
         break;
 
       case 'back':
-        console.log('Go back.');
+        console.log(data.info);
         drone.back(data.speed);
         break;
 
       case 'left':
-        console.log('Go left.');
+        console.log(data.info);
         drone.left(data.speed);
         break;
 
       case 'right':
-        console.log('Go right.');
+        console.log(data.info);
         drone.right(data.speed);
         break;
 

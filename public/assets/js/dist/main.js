@@ -10227,6 +10227,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _tooltip = require('./tooltip');
+
 var _leds = require('./leds');
 
 var _battery = require('./battery');
@@ -10250,6 +10252,7 @@ var App = function App() {
   this.battery = new _battery.Battery();
   this.fly = new _fly.Fly();
   this.control = new _control.Control();
+  this.tooltip = new _tooltip.Tooltip();
 
   var socket = io.connect('/');
   socket.on('stats', function (data) {
@@ -10265,15 +10268,17 @@ var App = function App() {
   });
   this.fly.addClickListener(function (params) {
     socket.emit('fly', params);
+    _this.tooltip.create(params.info);
   });
   this.control.addEventListener(function (params) {
     socket.emit('control', params);
+    _this.tooltip.create(params.info);
   });
 };
 
 exports.default = App;
 
-},{"./battery":3,"./control":4,"./fly":5,"./leds":6}],3:[function(require,module,exports){
+},{"./battery":3,"./control":4,"./fly":5,"./leds":6,"./tooltip":8}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -10392,7 +10397,8 @@ var getParams = function getParams($el) {
   var params = {
     type: $el.data('drone-param-type'),
     speed: $el.data('drone-param-speed'),
-    keycode: $el.data('drone-param-keycode')
+    keycode: $el.data('drone-param-keycode'),
+    info: $el.data('drone-param-info')
   };
 
   return params;
@@ -10469,7 +10475,8 @@ var SELECTOR_FLY = '[data-drone-action="fly"]';
  */
 var getParams = function getParams($el) {
   var params = {
-    type: $el.data('drone-param-type')
+    type: $el.data('drone-param-type'),
+    info: $el.data('drone-param-info')
   };
 
   return params;
@@ -10579,6 +10586,73 @@ function _interopRequireDefault(obj) {
 
 new _app2.default();
 
-},{"./app":2}]},{},[7])
+},{"./app":2}],8:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Tooltip = undefined;
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var SELECTOR_TOOLTIP_WRAPPER = '[data-tooltip]';
+var STATE_ACTIVE = 'is-active';
+
+var Tooltip = exports.Tooltip = function () {
+  function Tooltip() {
+    _classCallCheck(this, Tooltip);
+
+    this.$tooltipWrapper = (0, _jquery2.default)(SELECTOR_TOOLTIP_WRAPPER);
+  }
+
+  _createClass(Tooltip, [{
+    key: 'create',
+    value: function create(data) {
+      var $tooltip = (0, _jquery2.default)('<div>', {
+        'class': 'c-tooltip__item',
+        'text': data
+      });
+      $tooltip.appendTo(this.$tooltipWrapper);
+
+      setTimeout(function () {
+        $tooltip.addClass(STATE_ACTIVE);
+      });
+      setTimeout(function () {
+        $tooltip.removeClass(STATE_ACTIVE);
+
+        setTimeout(function () {
+          $tooltip.remove();
+        }, 500); // value of CSS transition
+      }, 3000);
+    }
+  }]);
+
+  return Tooltip;
+}();
+
+},{"jquery":1}]},{},[7])
 
 //# sourceMappingURL=main.js.map

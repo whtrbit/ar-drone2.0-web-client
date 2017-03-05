@@ -1,3 +1,5 @@
+import {Tooltip} from './tooltip';
+
 import {Leds} from './leds';
 import {Battery} from './battery';
 import {Fly} from './fly';
@@ -9,6 +11,7 @@ class App {
     this.battery = new Battery();
     this.fly = new Fly();
     this.control = new Control();
+    this.tooltip = new Tooltip();
 
     var socket = io.connect('/');
     socket
@@ -26,9 +29,11 @@ class App {
     });
     this.fly.addClickListener((params) => {
       socket.emit('fly', params);
+      this.tooltip.create(params.info);
     })
     this.control.addEventListener((params) => {
       socket.emit('control', params);
+      this.tooltip.create(params.info);
     });
   }
 }

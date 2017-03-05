@@ -13,7 +13,8 @@ let getParams = function ($el) {
   var params = {
     type: $el.data('drone-param-type'),
     speed: $el.data('drone-param-speed'),
-    keycode: $el.data('drone-param-keycode')
+    keycode: $el.data('drone-param-keycode'),
+    info: $el.data('drone-param-info')
   };
 
   return params;
