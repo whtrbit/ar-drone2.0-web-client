@@ -9,7 +9,8 @@ let getParams = function ($el) {
   var params = {
     type: $el.data('drone-param-type'),
     hz: $el.data('drone-param-hz'),
-    duration: $el.data('drone-param-duration')
+    duration: $el.data('drone-param-duration'),
+    info: $el.data('drone-param-info')
   };
 
   return params;

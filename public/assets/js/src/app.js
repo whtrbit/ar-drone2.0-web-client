@@ -26,9 +26,11 @@ class App {
     // Events
     this.leds.addClickListener((params) => {
       socket.emit('leds', params);
+      this.tooltip.create(params.info);
     });
-    this.fly.addClickListener((params) => {
+    this.fly.addEventListener((params) => {
       socket.emit('fly', params);
+      console.log(params);
       this.tooltip.create(params.info);
     })
     this.control.addEventListener((params) => {

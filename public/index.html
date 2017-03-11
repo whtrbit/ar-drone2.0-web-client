@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ar-drone2.0-web-client</title>
+  <title>Ar-Drone 2.0 Web Client</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,25 +30,29 @@
           <button data-drone-action="fly"
                   data-drone-param-type="takeoff"
                   data-drone-param-info="Drone's taking off"
+                  data-drone-param-keycode="87"
                   class="c-button c-button--cta">Take off</button>
           <button data-drone-action="fly"
                   data-drone-param-type="land"
                   data-drone-param-info="Drone's landing"
+                  data-drone-param-keycode="83"
                   class="c-button c-button--cta">Land</button>
           <button data-drone-action="fly"
                   data-drone-param-type="stop"
                   data-drone-param-info="Drone's stopping"
-                  class="c-button c-button--cta">Stop</button>
+                  class="c-button c-button--cta">Stop</button><br>
 
           <button data-drone-action="leds"
                   data-drone-param-type="blinkRed"
                   data-drone-param-hz="3"
                   data-drone-param-duration="3"
+                  data-drone-param-info="blinkRed 3*3"
                   class="c-button c-button--transparent">blinkRed 3x3</button>
           <button data-drone-action="leds"
                   data-drone-param-type="blinkGreen"
                   data-drone-param-hz="3"
                   data-drone-param-duration="3"
+                  data-drone-param-info="blinkGreen 3*3"
                   class="c-button c-button--transparent">blinkGreen 3*3</button>
         </div>
 

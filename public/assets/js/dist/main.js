@@ -10265,9 +10265,11 @@ var App = function App() {
   // Events
   this.leds.addClickListener(function (params) {
     socket.emit('leds', params);
+    _this.tooltip.create(params.info);
   });
-  this.fly.addClickListener(function (params) {
+  this.fly.addEventListener(function (params) {
     socket.emit('fly', params);
+    console.log(params);
     _this.tooltip.create(params.info);
   });
   this.control.addEventListener(function (params) {
@@ -10469,6 +10471,8 @@ function _classCallCheck(instance, Constructor) {
 }
 
 var SELECTOR_FLY = '[data-drone-action="fly"]';
+var KEYCODE_FLY = 87,
+    KEYCODE_LAND = 83;
 
 /*
  * @returns {Object}
@@ -10476,7 +10480,8 @@ var SELECTOR_FLY = '[data-drone-action="fly"]';
 var getParams = function getParams($el) {
   var params = {
     type: $el.data('drone-param-type'),
-    info: $el.data('drone-param-info')
+    info: $el.data('drone-param-info'),
+    keycode: $el.data('drone-param-keycode')
   };
 
   return params;
@@ -10490,8 +10495,16 @@ var Fly = exports.Fly = function () {
   }
 
   _createClass(Fly, [{
-    key: 'addClickListener',
-    value: function addClickListener(cb) {
+    key: 'addEventListener',
+    value: function addEventListener(cb) {
+      (0, _jquery2.default)(window).on('keydown', function (e) {
+        if (e.which === KEYCODE_FLY || e.which === KEYCODE_LAND) {
+          var $el = (0, _jquery2.default)(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
+          var params = getParams($el);
+
+          cb(params);
+        }
+      });
       this.$fly.on('click', function (e) {
         e.preventDefault();
         var params = getParams((0, _jquery2.default)(e.target));
@@ -10545,7 +10558,8 @@ var getParams = function getParams($el) {
   var params = {
     type: $el.data('drone-param-type'),
     hz: $el.data('drone-param-hz'),
-    duration: $el.data('drone-param-duration')
+    duration: $el.data('drone-param-duration'),
+    info: $el.data('drone-param-info')
   };
 
   return params;

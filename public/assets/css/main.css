@@ -656,6 +656,7 @@ body {
 }
 .s-camera canvas {
   position: absolute;
+  min-width: 100%;
   height: 100%;
 }
 @media (orientation: landscape) {
