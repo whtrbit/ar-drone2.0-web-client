@@ -28,20 +28,34 @@ export class Control {
   addEventListener(cb) {
     $(window).on('keydown', (e) => {
       if (e.which === KEYCODE_FRONT ||
-          e.which === KEYCODE_BACK ||
-          e.which === KEYCODE_LEFT ||
-          e.which === KEYCODE_RIGHT) {
+        e.which === KEYCODE_BACK ||
+        e.which === KEYCODE_LEFT ||
+        e.which === KEYCODE_RIGHT) {
 
-        var $el = $(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
-        var params = getParams($el);
+        const $el = $(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
+        const params = getParams($el);
 
         cb(params);
       }
     });
+    $(window).on('keyup', (e) => {
+      // @TODO: test if timeout is necessary
+      if (e.which === KEYCODE_FRONT ||
+          e.which === KEYCODE_BACK ||
+          e.which === KEYCODE_LEFT ||
+          e.which === KEYCODE_RIGHT) {
 
+        const $el = $(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
+        const params = getParams($el);
+              params.speed = 0;
+              params.info = getParams($el).info + ' stop';
+
+        cb(params);
+      }
+    });
     this.$control.on('click', (e) => {
       e.preventDefault();
-      var params = getParams($(e.target));
+      const params = getParams($(e.target));
 
       cb(params);
     });

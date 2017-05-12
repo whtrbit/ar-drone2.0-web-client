@@ -14,18 +14,19 @@ export class Battery {
     this.$batteryValue = this.$battery.find(SELECTOR_BATTERY_VALUE);
   }
 
-  update(level) {
-    this.$batteryProgress.css('width', level + '%');
-    this.$batteryValue.html(level);
+  update(data) {
+    console.log(data.value);
+    this.$batteryProgress.css('width', data.value + '%');
+    this.$batteryValue.html(data.value);
   }
-  colorize(level) {
+  colorize(data) {
     STATES.forEach((state) => {
       this.$battery.removeClass('is-' + state);
     });
 
-    if (level <= 33) {
+    if (data.value <= 33) {
       this.$battery.addClass('is-' + STATES[0]);
-    } else if (level >= 34 && level <= 66) {
+    } else if (data.value >= 34 && data.value <= 66) {
       this.$battery.addClass('is-' + STATES[1]);
     } else {
       this.$battery.addClass('is-' + STATES[2]);

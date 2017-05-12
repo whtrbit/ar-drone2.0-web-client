@@ -1,8 +1,9 @@
 import $ from 'jquery';
 
 const SELECTOR_FLY = '[data-drone-action="fly"]';
-const KEYCODE_FLY = 87,
-      KEYCODE_LAND = 83;
+const KEYCODE_TAKEOFF = 13, // enter
+      KEYCODE_LAND = 32, // space
+      KEYCODE_STOP = 17; // ctrl
 
 /*
  * @returns {Object}
@@ -24,7 +25,15 @@ export class Fly {
 
   addEventListener(cb) {
     $(window).on('keydown', (e) => {
-      if (e.which === KEYCODE_FLY || e.which === KEYCODE_LAND) {
+      if (e.which === KEYCODE_TAKEOFF || e.which === KEYCODE_LAND) {
+        var $el = $(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
+        var params = getParams($el);
+
+        cb(params);
+      }
+    });
+    $(window).on('keyup', (e) => {
+      if (e.which === KEYCODE_TAKEOFF || e.which === KEYCODE_LAND) {
         var $el = $(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
         var params = getParams($el);
 

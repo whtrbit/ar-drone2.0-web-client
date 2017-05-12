@@ -10269,7 +10269,6 @@ var App = function App() {
   });
   this.fly.addEventListener(function (params) {
     socket.emit('fly', params);
-    console.log(params);
     _this.tooltip.create(params.info);
   });
   this.control.addEventListener(function (params) {
@@ -10328,22 +10327,23 @@ var Battery = exports.Battery = function () {
 
   _createClass(Battery, [{
     key: 'update',
-    value: function update(level) {
-      this.$batteryProgress.css('width', level + '%');
-      this.$batteryValue.html(level);
+    value: function update(data) {
+      console.log(data.value);
+      this.$batteryProgress.css('width', data.value + '%');
+      this.$batteryValue.html(data.value);
     }
   }, {
     key: 'colorize',
-    value: function colorize(level) {
+    value: function colorize(data) {
       var _this = this;
 
       STATES.forEach(function (state) {
         _this.$battery.removeClass('is-' + state);
       });
 
-      if (level <= 33) {
+      if (data.value <= 33) {
         this.$battery.addClass('is-' + STATES[0]);
-      } else if (level >= 34 && level <= 66) {
+      } else if (data.value >= 34 && data.value <= 66) {
         this.$battery.addClass('is-' + STATES[1]);
       } else {
         this.$battery.addClass('is-' + STATES[2]);
@@ -10425,7 +10425,18 @@ var Control = exports.Control = function () {
           cb(params);
         }
       });
+      (0, _jquery2.default)(window).on('keyup', function (e) {
+        // @TODO: test if timeout is necessary
+        if (e.which === KEYCODE_FRONT || e.which === KEYCODE_BACK || e.which === KEYCODE_LEFT || e.which === KEYCODE_RIGHT) {
 
+          var $el = (0, _jquery2.default)(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
+          var params = getParams($el);
+          params.speed = 0;
+          params.info = getParams($el).info + ' stop';
+
+          cb(params);
+        }
+      });
       this.$control.on('click', function (e) {
         e.preventDefault();
         var params = getParams((0, _jquery2.default)(e.target));
@@ -10471,8 +10482,13 @@ function _classCallCheck(instance, Constructor) {
 }
 
 var SELECTOR_FLY = '[data-drone-action="fly"]';
-var KEYCODE_FLY = 87,
-    KEYCODE_LAND = 83;
+var KEYCODE_TAKEOFF = 13,
+
+// enter
+KEYCODE_LAND = 32,
+
+// space
+KEYCODE_STOP = 17; // ctrl
 
 /*
  * @returns {Object}
@@ -10498,7 +10514,15 @@ var Fly = exports.Fly = function () {
     key: 'addEventListener',
     value: function addEventListener(cb) {
       (0, _jquery2.default)(window).on('keydown', function (e) {
-        if (e.which === KEYCODE_FLY || e.which === KEYCODE_LAND) {
+        if (e.which === KEYCODE_TAKEOFF || e.which === KEYCODE_LAND) {
+          var $el = (0, _jquery2.default)(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
+          var params = getParams($el);
+
+          cb(params);
+        }
+      });
+      (0, _jquery2.default)(window).on('keyup', function (e) {
+        if (e.which === KEYCODE_TAKEOFF || e.which === KEYCODE_LAND) {
           var $el = (0, _jquery2.default)(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
           var params = getParams($el);
 

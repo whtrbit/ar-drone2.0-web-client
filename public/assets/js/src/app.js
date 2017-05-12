@@ -30,7 +30,6 @@ class App {
     });
     this.fly.addEventListener((params) => {
       socket.emit('fly', params);
-      console.log(params);
       this.tooltip.create(params.info);
     })
     this.control.addEventListener((params) => {

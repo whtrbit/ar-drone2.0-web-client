@@ -19,15 +19,17 @@ console.log('Listening on port 3000...');
 
 var numClients = 0;
 io.on('connection', function (socket) {
+  var batteryLevel = drone.battery();
+
   numClients++;
   io.emit('stats', { numClients: numClients });
   console.log('Connected:', numClients);
 
+  socket.emit('battery', { value: batteryLevel });
   setInterval(function () {
-    var batteryLevel = drone.battery();
-
+    console.log(batteryLevel);
     socket.emit('battery', { value: batteryLevel });
-  }, 60000);
+  }, 10000);
 
   socket.on('leds', function (data) {
     drone.animateLeds(data.type, data.hz, data.duration);
@@ -56,7 +58,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('control', function (data) {
-    switch(data.type) {
+    switch (data.type) {
       case 'front':
         console.log(data.info);
         drone.front(data.speed);
@@ -78,7 +80,7 @@ io.on('connection', function (socket) {
         break;
 
       default:
-        console.log('Uknown control event.');
+        console.log('Unknown control event.');
     }
   });
 

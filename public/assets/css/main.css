@@ -605,14 +605,16 @@ body {
   border-bottom-right-radius: 3px;
 }
 .s-battery__element span {
+  position: relative;
   display: inline-block;
   vertical-align: middle;
   font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
   line-height: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
   color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
 }
 .s-battery__progress {
   position: absolute;
