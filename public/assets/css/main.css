@@ -566,7 +566,7 @@ body {
   z-index: 10;
 }
 .s-playground__actions button {
-  margin: 2px;
+  margin: 4px 2px;
 }
 /* ===========================================================
    Battery
@@ -683,11 +683,11 @@ body {
   }
 }
 .s-control__wrap {
-  width: 50vw;
+  width: 30vw;
   max-width: 360px;
-  height: 50vw;
+  height: 30vw;
   max-height: 360px;
-  border-radius: 50vw;
+  border-radius: 30vw;
   transform: rotate(45deg);
   overflow: hidden;
   box-sizing: border-box;

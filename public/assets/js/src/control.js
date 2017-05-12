@@ -1,12 +1,19 @@
 import $ from 'jquery';
 
 const SELECTOR_CONTROL = '[data-drone-action="control"]';
-const KEYCODE_FRONT = 38,
-      KEYCODE_BACK = 40,
-      KEYCODE_LEFT = 37,
-      KEYCODE_RIGHT = 39;
+const keycodes = {
+  front: 38,
+  back: 40,
+  left: 37,
+  right: 39,
+  up: 87,
+  down: 83,
+  clockwise: 68,
+  counterClockwise: 65
+};
 
 /*
+ * Returns object with params from HTML data-attrs
  * @returns {Object}
  */
 let getParams = function ($el) {
@@ -27,10 +34,14 @@ export class Control {
 
   addEventListener(cb) {
     $(window).on('keydown', (e) => {
-      if (e.which === KEYCODE_FRONT ||
-        e.which === KEYCODE_BACK ||
-        e.which === KEYCODE_LEFT ||
-        e.which === KEYCODE_RIGHT) {
+      if (e.which === keycodes.front ||
+        e.which === keycodes.back ||
+        e.which === keycodes.left ||
+        e.which === keycodes.right ||
+        e.which === keycodes.up ||
+        e.which === keycodes.down ||
+        e.which === keycodes.clockwise ||
+        e.which === keycodes.counterClockwise ) {
 
         const $el = $(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
         const params = getParams($el);
@@ -39,17 +50,20 @@ export class Control {
       }
     });
     $(window).on('keyup', (e) => {
-      // @TODO: test if timeout is necessary
-      if (e.which === KEYCODE_FRONT ||
-          e.which === KEYCODE_BACK ||
-          e.which === KEYCODE_LEFT ||
-          e.which === KEYCODE_RIGHT) {
+      if (e.which === keycodes.front ||
+          e.which === keycodes.back ||
+          e.which === keycodes.left ||
+          e.which === keycodes.right ||
+          e.which === keycodes.up ||
+          e.which === keycodes.down ||
+          e.which === keycodes.clockwise ||
+          e.which === keycodes.counterClockwise ) {
 
         const $el = $(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
         const params = getParams($el);
               params.speed = 0;
               params.info = getParams($el).info + ' stop';
-
+console.log(params);
         cb(params);
       }
     });

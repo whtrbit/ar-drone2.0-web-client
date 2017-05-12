@@ -79,6 +79,26 @@ io.on('connection', function (socket) {
         drone.right(data.speed);
         break;
 
+      case 'up':
+        console.log(data.info);
+        drone.up(data.speed);
+        break;
+
+      case 'down':
+        console.log(data.info);
+        drone.down(data.speed);
+        break;
+
+      case 'clockwise':
+        console.log(data.info);
+        drone.clockwise(data.speed);
+        break;
+
+      case 'counterClockwise':
+        console.log(data.info);
+        drone.counterClockwise(data.speed);
+        break;
+
       default:
         console.log('Unknown control event.');
     }

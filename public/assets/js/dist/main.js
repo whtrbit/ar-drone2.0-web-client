@@ -10387,12 +10387,19 @@ function _classCallCheck(instance, Constructor) {
 }
 
 var SELECTOR_CONTROL = '[data-drone-action="control"]';
-var KEYCODE_FRONT = 38,
-    KEYCODE_BACK = 40,
-    KEYCODE_LEFT = 37,
-    KEYCODE_RIGHT = 39;
+var keycodes = {
+  front: 38,
+  back: 40,
+  left: 37,
+  right: 39,
+  up: 87,
+  down: 83,
+  clockwise: 68,
+  counterClockwise: 65
+};
 
 /*
+ * Returns object with params from HTML data-attrs
  * @returns {Object}
  */
 var getParams = function getParams($el) {
@@ -10417,7 +10424,7 @@ var Control = exports.Control = function () {
     key: 'addEventListener',
     value: function addEventListener(cb) {
       (0, _jquery2.default)(window).on('keydown', function (e) {
-        if (e.which === KEYCODE_FRONT || e.which === KEYCODE_BACK || e.which === KEYCODE_LEFT || e.which === KEYCODE_RIGHT) {
+        if (e.which === keycodes.front || e.which === keycodes.back || e.which === keycodes.left || e.which === keycodes.right || e.which === keycodes.up || e.which === keycodes.down || e.which === keycodes.clockwise || e.which === keycodes.counterClockwise) {
 
           var $el = (0, _jquery2.default)(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
           var params = getParams($el);
@@ -10426,14 +10433,13 @@ var Control = exports.Control = function () {
         }
       });
       (0, _jquery2.default)(window).on('keyup', function (e) {
-        // @TODO: test if timeout is necessary
-        if (e.which === KEYCODE_FRONT || e.which === KEYCODE_BACK || e.which === KEYCODE_LEFT || e.which === KEYCODE_RIGHT) {
+        if (e.which === keycodes.front || e.which === keycodes.back || e.which === keycodes.left || e.which === keycodes.right || e.which === keycodes.up || e.which === keycodes.down || e.which === keycodes.clockwise || e.which === keycodes.counterClockwise) {
 
           var $el = (0, _jquery2.default)(SELECTOR_CONTROL + '[data-drone-param-keycode="' + e.which + '"');
           var params = getParams($el);
           params.speed = 0;
           params.info = getParams($el).info + ' stop';
-
+          console.log(params);
           cb(params);
         }
       });
