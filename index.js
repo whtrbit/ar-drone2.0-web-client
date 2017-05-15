@@ -6,7 +6,7 @@ var express = require('express'),
     arDrone = require('ar-drone'),
     client = arDrone.createClient(),
     control = arDrone.createUdpControl(),
-    // stream = require('clientstream'),
+    stream = require('dronestream'),
     mission = require('ardrone-autonomy').createMission();
 
 app.use('/public', express.static(path.join(__dirname + '/public')));
@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 });
 
 server.listen(3000);
-// stream.listen(3001);
+stream.listen(3001);
 
 console.log('Listening on port 3000...');
 
