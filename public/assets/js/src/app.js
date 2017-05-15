@@ -4,6 +4,7 @@ import {Leds} from './leds';
 import {Battery} from './battery';
 import {Fly} from './fly';
 import {Control} from './control';
+import {Missions} from './missions';
 
 class App {
   constructor() {
@@ -11,6 +12,7 @@ class App {
     this.battery = new Battery();
     this.fly = new Fly();
     this.control = new Control();
+    this.missions = new Missions();
     this.tooltip = new Tooltip();
 
     var socket = io.connect('/');
@@ -31,11 +33,15 @@ class App {
     this.fly.addEventListener((params) => {
       socket.emit('fly', params);
       this.tooltip.create(params.info);
-    })
+    });
     this.control.addEventListener((params) => {
       socket.emit('control', params);
       this.tooltip.create(params.info);
     });
+    // this.missions.fire(() => {
+    //   socket.emit('missionSquare');
+    //   this.tooltip.create('Mission square fired');
+    // });
   }
 }
 

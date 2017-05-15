@@ -3,8 +3,11 @@ var express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io')(server),
     path = require('path'),
-    drone = require('ar-drone').createClient(),
-    stream = require('dronestream');
+    arDrone = require('ar-drone'),
+    client = arDrone.createClient(),
+    control = arDrone.createUdpControl(),
+    // stream = require('clientstream'),
+    mission = require('ardrone-autonomy').createMission();
 
 app.use('/public', express.static(path.join(__dirname + '/public')));
 
@@ -13,13 +16,13 @@ app.get('/', function (req, res) {
 });
 
 server.listen(3000);
-stream.listen(3001);
+// stream.listen(3001);
 
 console.log('Listening on port 3000...');
 
 var numClients = 0;
 io.on('connection', function (socket) {
-  var batteryLevel = drone.battery();
+  var batteryLevel = client.battery();
 
   numClients++;
   io.emit('stats', { numClients: numClients });
@@ -32,24 +35,24 @@ io.on('connection', function (socket) {
   }, 10000);
 
   socket.on('leds', function (data) {
-    drone.animateLeds(data.type, data.hz, data.duration);
+    client.animateLeds(data.type, data.hz, data.duration);
   });
 
   socket.on('fly', function (data) {
     switch (data.type) {
       case 'takeoff':
         console.log(data.info);
-        drone.takeoff();
+        client.takeoff();
         break;
 
       case 'stop':
         console.log(data.info);
-        drone.stop();
+        client.stop();
         break;
 
       case 'land':
         console.log(data.info);
-        drone.land();
+        client.land();
         break;
 
       default:
@@ -61,47 +64,70 @@ io.on('connection', function (socket) {
     switch (data.type) {
       case 'front':
         console.log(data.info);
-        drone.front(data.speed);
+        client.front(data.speed);
         break;
 
       case 'back':
         console.log(data.info);
-        drone.back(data.speed);
+        client.back(data.speed);
         break;
 
       case 'left':
         console.log(data.info);
-        drone.left(data.speed);
+        client.left(data.speed);
         break;
 
       case 'right':
         console.log(data.info);
-        drone.right(data.speed);
+        client.right(data.speed);
         break;
 
       case 'up':
         console.log(data.info);
-        drone.up(data.speed);
+        client.up(data.speed);
         break;
 
       case 'down':
         console.log(data.info);
-        drone.down(data.speed);
+        client.down(data.speed);
         break;
 
       case 'clockwise':
         console.log(data.info);
-        drone.clockwise(data.speed);
+        client.clockwise(data.speed);
         break;
 
       case 'counterClockwise':
         console.log(data.info);
-        drone.counterClockwise(data.speed);
+        client.counterClockwise(data.speed);
         break;
 
       default:
         console.log('Unknown control event.');
     }
+  });
+
+  socket.on('missionSquare', function () {
+    mission.takeoff()
+           .zero()
+           .altitude(1)
+           .forward(1)
+           .right(1)
+           .backward(1)
+           .left(1)
+           .hover(1000)
+           .land();
+
+    mission.run(function (err, res) {
+      if (err) {
+        console.trace("Oooops, sth bad happened: %s", err.message);
+        mission.client().stop();
+        mission.client().land();
+      } else {
+        console.log("Mission success!");
+        process.exit(0);
+      }
+    })
   });
 
   socket.on('disconnect', function () {

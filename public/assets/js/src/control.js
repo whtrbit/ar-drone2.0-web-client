@@ -63,12 +63,13 @@ export class Control {
         const params = getParams($el);
               params.speed = 0;
               params.info = getParams($el).info + ' stop';
-console.log(params);
+
         cb(params);
       }
     });
     this.$control.on('click', (e) => {
       e.preventDefault();
+
       const params = getParams($(e.target));
 
       cb(params);

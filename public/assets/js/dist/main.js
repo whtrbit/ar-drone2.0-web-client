@@ -10237,6 +10237,8 @@ var _fly = require('./fly');
 
 var _control = require('./control');
 
+var _missions = require('./missions');
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -10252,6 +10254,7 @@ var App = function App() {
   this.battery = new _battery.Battery();
   this.fly = new _fly.Fly();
   this.control = new _control.Control();
+  this.missions = new _missions.Missions();
   this.tooltip = new _tooltip.Tooltip();
 
   var socket = io.connect('/');
@@ -10275,11 +10278,15 @@ var App = function App() {
     socket.emit('control', params);
     _this.tooltip.create(params.info);
   });
+  // this.missions.fire(() => {
+  //   socket.emit('missionSquare');
+  //   this.tooltip.create('Mission square fired');
+  // });
 };
 
 exports.default = App;
 
-},{"./battery":3,"./control":4,"./fly":5,"./leds":6,"./tooltip":8}],3:[function(require,module,exports){
+},{"./battery":3,"./control":4,"./fly":5,"./leds":6,"./missions":8,"./tooltip":9}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -10439,7 +10446,7 @@ var Control = exports.Control = function () {
           var params = getParams($el);
           params.speed = 0;
           params.info = getParams($el).info + ' stop';
-          console.log(params);
+
           cb(params);
         }
       });
@@ -10631,6 +10638,44 @@ function _interopRequireDefault(obj) {
 new _app2.default();
 
 },{"./app":2}],8:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var Missions = exports.Missions = function () {
+  function Missions() {
+    _classCallCheck(this, Missions);
+  }
+
+  _createClass(Missions, [{
+    key: 'fire',
+    value: function fire() {
+      console.log('Mission square fired.');
+    }
+  }]);
+
+  return Missions;
+}();
+
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

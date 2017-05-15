@@ -45,25 +45,25 @@
 
           <button data-drone-action="control"
                   data-drone-param-type="up"
-                  data-drone-param-speed="0.2"
+                  data-drone-param-speed="1"
                   data-drone-param-keycode="87"
                   data-drone-param-info="Go up"
                   class="c-button">Up</button>
           <button data-drone-action="control"
                   data-drone-param-type="down"
-                  data-drone-param-speed="0.2"
+                  data-drone-param-speed="0.5"
                   data-drone-param-info="Go down"
                   data-drone-param-keycode="83"
                   class="c-button">Down</button>
           <button data-drone-action="control"
                   data-drone-param-type="clockwise"
-                  data-drone-param-speed="0.2"
+                  data-drone-param-speed="0.5"
                   data-drone-param-keycode="68"
                   data-drone-param-info="Turn right"
                   class="c-button">Right</button>
           <button data-drone-action="control"
                   data-drone-param-type="counterClockwise"
-                  data-drone-param-speed="0.2"
+                  data-drone-param-speed="0.5"
                   data-drone-param-info="Turn left"
                   data-drone-param-keycode="65"
                   class="c-button">Left</button><br>
@@ -86,7 +86,7 @@
           <ul class="s-control__wrap">
             <li data-drone-action="control"
                 data-drone-param-type="front"
-                data-drone-param-speed="0.1"
+                data-drone-param-speed="0.8"
                 data-drone-param-keycode="38"
                 data-drone-param-info="Go front"
                 class="s-control__item s-control__item--front">
@@ -94,7 +94,7 @@
             </li>
             <li data-drone-action="control"
                 data-drone-param-type="right"
-                data-drone-param-speed="0.1"
+                data-drone-param-speed="0.8"
                 data-drone-param-keycode="39"
                 data-drone-param-info="Go right"
                 class="s-control__item s-control__item--right">
@@ -102,7 +102,7 @@
             </li>
             <li data-drone-action="control"
                 data-drone-param-type="left"
-                data-drone-param-speed="0.1"
+                data-drone-param-speed="0.8"
                 data-drone-param-keycode="37"
                 data-drone-param-info="Go left"
                 class="s-control__item s-control__item--left">
@@ -110,7 +110,7 @@
             </li>
             <li data-drone-action="control"
                 data-drone-param-type="back"
-                data-drone-param-speed="0.1"
+                data-drone-param-speed="0.8"
                 data-drone-param-keycode="40"
                 data-drone-param-info="Go back"
                 class="s-control__item s-control__item--back">
@@ -125,9 +125,9 @@
   </div>
 
   <script src="assets/js/dist/libs/socket.io.js"></script>
-  <script src="assets/js/dist/libs/nodecopter-client.js"></script>
+  <!-- <script src="assets/js/dist/libs/nodecopter-client.js"></script> -->
   <script>
-    new NodecopterStream(document.getElementById("camera"), {port: 3001});
+    //  new NodecopterStream(document.getElementById("camera"), {port: 3001});
   </script>
   <script src="assets/js/dist/main.js"></script>
 </body>
