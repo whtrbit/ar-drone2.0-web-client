@@ -32,7 +32,7 @@ io.on('connection', function (socket) {
   setInterval(function () {
     console.log(batteryLevel);
     socket.emit('battery', { value: batteryLevel });
-  }, 10000);
+  }, 60000);
 
   socket.on('leds', function (data) {
     client.animateLeds(data.type, data.hz, data.duration);
