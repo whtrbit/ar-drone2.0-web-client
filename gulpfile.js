@@ -6,8 +6,7 @@ var fs = require('fs'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     babelify = require('babelify'),
-    sourcemaps = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync');
+    sourcemaps = require('gulp-sourcemaps');
 
 var path = {
   js: {
@@ -42,8 +41,7 @@ gulp.task('js', function () {
 gulp.task('less', function () {
     return gulp.src(path.css.src + 'main.less')
       .pipe(less())
-      .pipe(gulp.dest(path.css.dest))
-      .pipe(browserSync.stream());
+      .pipe(gulp.dest(path.css.dest));
 });
 
 gulp.task('build', ['js', 'less']);
@@ -51,22 +49,4 @@ gulp.task('build', ['js', 'less']);
 gulp.task('watch', function() {
   gulp.watch(path.js.src + '**/*.js', [ 'js' ]);
   gulp.watch(path.css.src + '**/*.less', [ 'less' ]);
-});
-
-gulp.task('bs', function () {
-  browserSync({
-    proxy: 'localhost:3000',
-    port: 3000,
-    files: [
-      path.js.dest + 'main.js',
-      path.css.dest + 'main.css',
-      path.html.src + 'index.html'
-    ],
-    open: false,
-    ghostMode: false,
-    proxy: {
-      target: 'http://localhost:3000',
-      ws: true
-    }
-  });
 });
