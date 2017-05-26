@@ -1,2 +1,4 @@
 node_modules
 npm-debug.log
+public/assets/css
+public/assets/js/dist
