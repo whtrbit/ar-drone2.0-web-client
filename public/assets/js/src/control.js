@@ -16,7 +16,7 @@ const keycodes = {
  * Returns object with params from HTML data-attrs
  * @returns {Object}
  */
-let getParams = function ($el) {
+const getParams = function ($el) {
   var params = {
     type: $el.data('drone-param-type'),
     speed: $el.data('drone-param-speed'),
@@ -33,7 +33,7 @@ export class Control {
   }
 
   addEventListener(cb) {
-    $(window).on('keydown', (e) => {
+    $(window).on('keydown', e => {
       if (e.which === keycodes.front ||
         e.which === keycodes.back ||
         e.which === keycodes.left ||
@@ -49,7 +49,7 @@ export class Control {
         cb(params);
       }
     });
-    $(window).on('keyup', (e) => {
+    $(window).on('keyup', e => {
       if (e.which === keycodes.front ||
           e.which === keycodes.back ||
           e.which === keycodes.left ||
@@ -67,7 +67,7 @@ export class Control {
         cb(params);
       }
     });
-    this.$control.on('click', (e) => {
+    this.$control.on('click', e => {
       e.preventDefault();
 
       const params = getParams($(e.target));

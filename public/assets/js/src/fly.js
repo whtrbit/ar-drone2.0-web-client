@@ -8,8 +8,8 @@ const KEYCODE_TAKEOFF = 13, // enter
 /*
  * @returns {Object}
  */
-let getParams = function ($el) {
-  var params = {
+let getParams = $el => {
+  const params = {
     type: $el.data('drone-param-type'),
     info: $el.data('drone-param-info'),
     keycode: $el.data('drone-param-keycode')
@@ -24,25 +24,25 @@ export class Fly {
   }
 
   addEventListener(cb) {
-    $(window).on('keydown', (e) => {
+    $(window).on('keydown', e => {
       if (e.which === KEYCODE_TAKEOFF || e.which === KEYCODE_LAND) {
-        var $el = $(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
-        var params = getParams($el);
+        const $el = $(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
+        const params = getParams($el);
 
         cb(params);
       }
     });
-    $(window).on('keyup', (e) => {
+    $(window).on('keyup', e => {
       if (e.which === KEYCODE_TAKEOFF || e.which === KEYCODE_LAND) {
-        var $el = $(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
-        var params = getParams($el);
+        const $el = $(SELECTOR_FLY + '[data-drone-param-keycode="' + e.which + '"');
+        const params = getParams($el);
 
         cb(params);
       }
     });
-    this.$fly.on('click', (e) => {
+    this.$fly.on('click', e => {
       e.preventDefault();
-      var params = getParams($(e.target));
+      const params = getParams($(e.target));
 
       cb(params);
     });

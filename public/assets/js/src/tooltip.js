@@ -9,7 +9,7 @@ export class Tooltip {
   }
 
   create(data) {
-    var $tooltip = $('<div>', {
+    const $tooltip = $('<div>', {
       'class': 'c-tooltip__item',
       'text': data
     });

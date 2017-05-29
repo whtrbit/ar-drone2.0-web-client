@@ -20,7 +20,7 @@ export class Battery {
     this.$batteryValue.html(data.value);
   }
   colorize(data) {
-    STATES.forEach((state) => {
+    STATES.forEach(state => {
       this.$battery.removeClass('is-' + state);
     });
 

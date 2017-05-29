@@ -15,7 +15,7 @@ class App {
     this.missions = new Missions();
     this.tooltip = new Tooltip();
 
-    var socket = io.connect('/');
+    const socket = io.connect('/');
     socket
       .on('stats', (data) => {
         console.log('Connected clients:', data.numClients);
@@ -26,15 +26,15 @@ class App {
       });
 
     // Events
-    this.leds.addClickListener((params) => {
+    this.leds.addClickListener(params => {
       socket.emit('leds', params);
       this.tooltip.create(params.info);
     });
-    this.fly.addEventListener((params) => {
+    this.fly.addEventListener(params => {
       socket.emit('fly', params);
       this.tooltip.create(params.info);
     });
-    this.control.addEventListener((params) => {
+    this.control.addEventListener(params => {
       socket.emit('control', params);
       this.tooltip.create(params.info);
     });

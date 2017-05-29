@@ -5,8 +5,8 @@ const SELECTOR_LEDS = '[data-drone-action="leds"]';
 /*
  * @returns {Object}
  */
-let getParams = function ($el) {
-  var params = {
+const getParams = function ($el) {
+  const params = {
     type: $el.data('drone-param-type'),
     hz: $el.data('drone-param-hz'),
     duration: $el.data('drone-param-duration'),
@@ -22,9 +22,9 @@ export class Leds {
   }
 
   addClickListener(cb) {
-    this.$leds.on('click', (e) => {
+    this.$leds.on('click', e => {
       e.preventDefault();
-      var params = getParams($(e.target));
+      const params = getParams($(e.target));
 
       cb(params);
     });
