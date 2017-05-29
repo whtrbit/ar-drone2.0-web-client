@@ -1,14 +1,7 @@
 # ar-drone2.0-web-client
-Node Express/Socket.IO/ar-drone web application to interact with Ar-Drone 2.0
+It's a cleared repository that we will start with.
 
-## Installation & Starting the app
-Remember to install Node at least at version v6.10.3.
-Then follow provided steps:
-
-```bash
-npm i
-npm run build
-npm run start
-```
-
-Go to [http://localhost:3000/public/index.html](http://localhost:3000/public/index.html)
+This step will cover:
+- setting up the Express server
+- connecting to the Ar-Drone via this server
+- getting connected clients via Socket.IO

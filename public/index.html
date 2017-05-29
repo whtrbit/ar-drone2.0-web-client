@@ -13,108 +13,14 @@
     <div class="s-playground">
       <div class="s-playground__col">
         <div class="playground__camera s-camera">
-          <div id="camera"></div>
-          <div class="s-battery" data-drone-battery>
-            <div class="s-battery__element">
-              <div class="s-battery__progress" data-drone-battery="progress"></div>
-              <span data-drone-battery="value"></span>
-            </div>
-          </div>
         </div>
       </div>
 
       <div class="s-playground__col">
         <div class="s-playground__actions">
-          <button data-drone-action="fly"
-                  data-drone-param-type="takeoff"
-                  data-drone-param-info="Drone's taking off"
-                  data-drone-param-keycode="13"
-                  class="c-button c-button--cta">Take off</button>
-          <button data-drone-action="fly"
-                  data-drone-param-type="land"
-                  data-drone-param-info="Drone's landing"
-                  data-drone-param-keycode="32"
-                  class="c-button c-button--cta">Land</button>
-          <button data-drone-action="fly"
-                  data-drone-param-type="stop"
-                  data-drone-param-info="Drone's stopping"
-                  data-drone-param-keycode="17"
-                  class="c-button c-button--cta">Stop</button><br>
-
-          <button data-drone-action="control"
-                  data-drone-param-type="up"
-                  data-drone-param-speed="1"
-                  data-drone-param-keycode="87"
-                  data-drone-param-info="Go up"
-                  class="c-button">Up</button>
-          <button data-drone-action="control"
-                  data-drone-param-type="down"
-                  data-drone-param-speed="0.5"
-                  data-drone-param-info="Go down"
-                  data-drone-param-keycode="83"
-                  class="c-button">Down</button>
-          <button data-drone-action="control"
-                  data-drone-param-type="clockwise"
-                  data-drone-param-speed="0.5"
-                  data-drone-param-keycode="68"
-                  data-drone-param-info="Turn right"
-                  class="c-button">Right</button>
-          <button data-drone-action="control"
-                  data-drone-param-type="counterClockwise"
-                  data-drone-param-speed="0.5"
-                  data-drone-param-info="Turn left"
-                  data-drone-param-keycode="65"
-                  class="c-button">Left</button><br>
-
-          <button data-drone-action="leds"
-                  data-drone-param-type="blinkRed"
-                  data-drone-param-hz="3"
-                  data-drone-param-duration="3"
-                  data-drone-param-info="blinkRed 3*3"
-                  class="c-button c-button--transparent">blinkRed 3x3</button>
-          <button data-drone-action="leds"
-                  data-drone-param-type="blinkGreen"
-                  data-drone-param-hz="3"
-                  data-drone-param-duration="3"
-                  data-drone-param-info="blinkGreen 3*3"
-                  class="c-button c-button--transparent">blinkGreen 3*3</button>
         </div>
 
         <div class="s-playground__control s-control">
-          <ul class="s-control__wrap">
-            <li data-drone-action="control"
-                data-drone-param-type="front"
-                data-drone-param-speed="0.8"
-                data-drone-param-keycode="38"
-                data-drone-param-info="Go front"
-                class="s-control__item s-control__item--front">
-              <i class="icon icon--top"></i>
-            </li>
-            <li data-drone-action="control"
-                data-drone-param-type="right"
-                data-drone-param-speed="0.8"
-                data-drone-param-keycode="39"
-                data-drone-param-info="Go right"
-                class="s-control__item s-control__item--right">
-              <i class="icon icon--top"></i>
-            </li>
-            <li data-drone-action="control"
-                data-drone-param-type="left"
-                data-drone-param-speed="0.8"
-                data-drone-param-keycode="37"
-                data-drone-param-info="Go left"
-                class="s-control__item s-control__item--left">
-              <i class="icon icon--top"></i>
-            </li>
-            <li data-drone-action="control"
-                data-drone-param-type="back"
-                data-drone-param-speed="0.8"
-                data-drone-param-keycode="40"
-                data-drone-param-info="Go back"
-                class="s-control__item s-control__item--back">
-              <i class="icon icon--top"></i>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -123,10 +29,6 @@
   </div>
 
   <script src="assets/js/vendors/socket.io.js"></script>
-  <script src="assets/js/vendors/nodecopter-client.js"></script>
-  <script>
-     new NodecopterStream(document.getElementById("camera"), {port: 3001});
-  </script>
   <script src="assets/js/dist/main.js"></script>
 </body>
 </html>
