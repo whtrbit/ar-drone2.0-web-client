@@ -12,3 +12,19 @@ npm run start
 ```
 
 Go to [http://localhost:3000/public/index.html](http://localhost:3000/public/index.html)
+
+## Controlling the drone with keyboard
+Go front `arrow up`
+Go back `arrow down`
+Go left `arrow left`
+Go right `arrow right`
+
+Increase altitude `w`
+Deacrease altitude `s`
+
+Turn left `a`
+Turn right `d`
+
+Land `space`
+Hover in position `ctrl`
+Takeoff `enter`
