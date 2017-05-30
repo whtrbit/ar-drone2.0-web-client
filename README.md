@@ -39,5 +39,7 @@ Takeoff `enter`
 ## Development
 You can easily download this reposiory to play around. Any pull request is welcome to.
 In order to dev I recommend using:
+
 `npm run dev` that runs nodemon process which automatically reloads the server on any Javascript change
+
 `npm run watch` that runs Gulp process to build JS and LESS
