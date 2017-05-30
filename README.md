@@ -5,3 +5,4 @@ This step will cover:
 - setting up the Express server
 - connecting to the Ar-Drone via this server
 - getting connected clients via Socket.IO
+- experimenting with drone API
