@@ -1,7 +1,6 @@
 # ar-drone2.0-web-client
-It's time to move some attention to the browser now.
+It's kinda a mess roght now, huh? Let's try to clean this code.
 
 This step will cover:
-- creating frontend layer with sockets
-- sending events from browser to the server
-- handling battery level update & blinking with front layer of the app
+- introducing the architecture of the frontend
+- onclick events (JS talking with DOM)

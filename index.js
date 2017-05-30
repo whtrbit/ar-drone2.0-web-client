@@ -19,21 +19,25 @@ console.log('Listening on port 3000...');
 
 let numClients = 0;
 io.on('connection', socket => {
+  let batteryLvl = client.battery();
   numClients++;
   console.log('Connected:', numClients);
 
-  console.log(client.battery());
+  console.log(batteryLvl);
+  socket.emit('battery', batteryLvl);
   setInterval(() => {
-    console.log(client.battery());
+    console.log(batteryLvl);
+    socket.emit('battery', batteryLvl);
   }, 60000);
 
-  client.animateLeds('blinkRed', 3, 3);
-  client
-    .after(3000, () => {
-      client.animateLeds('blinkGreen', 5, 5);
-    });
+  socket.emit('stats', { numClients });
 
-  socket.on('disconnect', function () {
+  socket.on('leds', data => {
+    client.animateLeds(data.type, data.hz, data.duration);
+    console.log(data.type);
+  });
+
+  socket.on('disconnect', () => {
     numClients--;
     console.log('Connected:', numClients);
   });
