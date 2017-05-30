@@ -22,19 +22,22 @@ Go left `arrow left`
 
 Go right `arrow right`
 
-
 Increase altitude `w`
 
 Deacrease altitude `s`
 
-
 Turn left `a`
 
 Turn right `d`
-
 
 Land `space`
 
 Hover in position `ctrl`
 
 Takeoff `enter`
+
+## Development
+You can easily download this reposiory to play around. Any pull request is welcome to.
+In order to dev I recommend using:
+`npm run dev` that runs nodemon process which automatically reloads the server on any Javascript change
+`npm run watch` that runs Gulp process to build JS and LESS
