@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
 server.listen(3000);
 console.log('Listening on port 3000...');
 
+stream.listen(3001);
+
 let numClients = 0;
 io.on('connection', socket => {
   let batteryLvl = client.battery();
@@ -102,6 +104,36 @@ io.on('connection', socket => {
 
       default:
         console.log('Unknown control event.');
+    }
+  });
+
+  socket.on('mission', data => {
+    switch (data.mission) {
+      case 'square':
+        mission.takeoff()
+               .zero()
+               .altitude(1)
+               .forward(1)
+               .right(1)
+               .backward(1)
+               .left(1)
+               .hover(1000)
+               .land();
+
+        mission.run((err, res) => {
+          if (err) {
+            console.trace("Oooops, sth bad happened: %s", err.message);
+            mission.client().stop();
+            mission.client().land();
+          } else {
+            console.log('Mission ' + data.mission + ' successed!');
+            process.exit(0);
+          }
+        });
+        break;
+
+      default:
+        console.log('Unknown mission event.');
     }
   });
 

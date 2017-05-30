@@ -3,6 +3,7 @@ import {Battery} from './battery';
 import {Leds} from './leds';
 import {Fly} from './fly';
 import {Control} from './control';
+import {Missions} from './missions';
 
 class App {
   constructor() {
@@ -11,6 +12,7 @@ class App {
     this.leds = new Leds();
     this.fly = new Fly();
     this.control = new Control();
+    this.missions = new Missions();
 
     let socket = io.connect('/');
 
@@ -35,6 +37,10 @@ class App {
     this.control.addEventListener(params => {
       socket.emit('control', params);
       this.tooltip.create(params.info);
+    });
+    this.missions.addClickListener(data => {
+      socket.emit('mission', data);
+      this.tooltip.create(data.info);
     });
   }
 }
