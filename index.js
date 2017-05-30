@@ -23,12 +23,11 @@ io.on('connection', socket => {
   numClients++;
   console.log('Connected:', numClients);
 
-  console.log(batteryLvl);
-  socket.emit('battery', batteryLvl);
+  socket.emit('battery', { value: batteryLvl });
   setInterval(() => {
     console.log(batteryLvl);
-    socket.emit('battery', batteryLvl);
-  }, 60000);
+    socket.emit('battery', { value: batteryLvl });
+  }, 5000);
 
   socket.emit('stats', { numClients });
 

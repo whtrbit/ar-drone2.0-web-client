@@ -13,11 +13,29 @@
     <div class="s-playground">
       <div class="s-playground__col">
         <div class="playground__camera s-camera">
+          <div class="s-battery" data-drone-battery>
+            <div class="s-battery__element">
+              <div class="s-battery__progress" data-drone-battery="progress"></div>
+              <span data-drone-battery="value"></span>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="s-playground__col">
         <div class="s-playground__actions">
+          <button data-drone-action="leds"
+                  data-drone-param-type="blinkRed"
+                  data-drone-param-hz="3"
+                  data-drone-param-duration="3"
+                  data-drone-param-info="blinkRed 3*3"
+                  class="c-button c-button--transparent">blinkRed 3x3</button>
+          <button data-drone-action="leds"
+                  data-drone-param-type="blinkGreen"
+                  data-drone-param-hz="3"
+                  data-drone-param-duration="3"
+                  data-drone-param-info="blinkGreen 3*3"
+                  class="c-button c-button--transparent">blinkGreen 3*3</button>
         </div>
 
         <div class="s-playground__control s-control">
