@@ -7,6 +7,7 @@ And that would everything for this workshop. As the result of this workshop is:
 - basic knowledge of libraries like Socket.IO/Express
 - understanding of Javascript events
 - meeting esnext syntax (we used ES 2016, 2017 is not a standard yet)
+- meeting some Node based frontend workflow
 
 Thanks a lot!
 With regards,
