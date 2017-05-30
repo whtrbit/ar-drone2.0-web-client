@@ -1,8 +1,7 @@
 # ar-drone2.0-web-client
-It's a cleared repository that we will start with.
+It's time to move some attention to the browser now.
 
 This step will cover:
-- setting up the Express server
-- connecting to the Ar-Drone via this server
-- getting connected clients via Socket.IO
-- experimenting with drone API
+- creating frontend layer with sockets
+- sending events from browser to the server
+- handling battery level update & blinking with front layer of the app

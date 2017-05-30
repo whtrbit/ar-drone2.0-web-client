@@ -9,4 +9,32 @@ const express = require('express'),
       stream = require('dronestream'),
       mission = require('ardrone-autonomy').createMission();
 
-// Just dependencies
+app.use('/public', express.static(path.join(__dirname + '/public')));
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+server.listen(3000);
+console.log('Listening on port 3000...');
+
+let numClients = 0;
+io.on('connection', socket => {
+  numClients++;
+  console.log('Connected:', numClients);
+
+  console.log(client.battery());
+  setInterval(() => {
+    console.log(client.battery());
+  }, 60000);
+
+  client.animateLeds('blinkRed', 3, 3);
+  client
+    .after(3000, () => {
+      client.animateLeds('blinkGreen', 5, 5);
+    });
+
+  socket.on('disconnect', function () {
+    numClients--;
+    console.log('Connected:', numClients);
+  });
+});
