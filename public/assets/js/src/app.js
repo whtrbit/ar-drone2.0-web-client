@@ -38,10 +38,10 @@ class App {
       socket.emit('control', params);
       this.tooltip.create(params.info);
     });
-    // this.missions.fire(() => {
-    //   socket.emit('missionSquare');
-    //   this.tooltip.create('Mission square fired');
-    // });
+    this.missions.addClickListener(data => {
+      socket.emit('mission', data);
+      this.tooltip.create(data.info);
+    });
   }
 }
 
